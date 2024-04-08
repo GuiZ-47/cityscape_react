@@ -1,19 +1,51 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 
-const ViewBoxesWithColorAndText = () => {
+const CounterFiveSection = () => {
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        height: 100,
-        padding: 20
-      }}>
-      <View style={{backgroundColor: 'blue', flex: 0.3}} />
-      <View style={{backgroundColor: 'red', flex: 0.5}} />
-      <Text>Hello World!</Text>
+    <View className="counter-five padding-y-120">
+      <View className="container container-two">
+        <View className="counter-five-wrapper">
+          <View className="counter-five-item style-two d-flex align-items-center">
+            <Text className="counter-five-item__icon">
+              <Image source="assets/images/icons/counter-five-icon1.svg" alt="" />
+            </Text>
+            <View className="counter-five-item__content">
+              <Text className="counter-five-item__number text-heading">200+</Text>
+              <Text className="counter-five-item__text text-body">Team member</Text>
+            </View>
+          </View>
+          <View className="counter-five-item style-two d-flex align-items-center">
+            <Text className="counter-five-item__icon">
+              <Image source="assets/images/icons/counter-five-icon2.svg" alt="" />
+            </Text>
+            <View className="counter-five-item__content">
+              <Text className="counter-five-item__number text-heading">20+</Text>
+              <Text className="counter-five-item__text text-body">Winning award</Text>
+            </View>
+          </View>
+          <View className="counter-five-item style-two d-flex align-items-center">
+            <Text className="counter-five-item__icon">
+              <Image source="assets/images/icons/counter-five-icon3.svg" alt="" />
+            </Text>
+            <View className="counter-five-item__content">
+              <Text className="counter-five-item__number text-heading">10k</Text>
+              <Text className="counter-five-item__text text-body">Complete project</Text>
+            </View>
+          </View>
+          <View className="counter-five-item style-two d-flex align-items-center">
+            <Text className="counter-five-item__icon">
+              <Image source="assets/images/icons/counter-five-icon4.svg" alt="" />
+            </Text>
+            <View className="counter-five-item__content">
+              <Text className="counter-five-item__number text-heading">90k</Text>
+              <Text className="counter-five-item__text text-body">Client review</Text>
+            </View>
+          </View>
+        </View>
+      </View>
     </View>
   );
 };
 
-export default ViewBoxesWithColorAndText;
+export default CounterFiveSection;
