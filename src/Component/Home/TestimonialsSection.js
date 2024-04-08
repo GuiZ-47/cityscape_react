@@ -25,13 +25,13 @@ const TestimonialsSection = () => {
                     <Image source="assets/images/icons/quote.svg" alt="" />
                   </View>
                   <Text className="testimonial-item__desc">Their product exceeded his my routi  expectations. The the quality and attention to detail a the a moutstanding and it has become an essential most a education the a man who can do tant clearly</Text>
-                  <ul className="star-rating flx-align justify-content-end">
-                    <li className="star-rating__item"><Text className="fas fa-star"></Text></li>
-                    <li className="star-rating__item"><Text className="fas fa-star"></Text></li>
-                    <li className="star-rating__item"><Text className="fas fa-star"></Text></li>
-                    <li className="star-rating__item"><Text className="fas fa-star"></Text></li>
-                    <li className="star-rating__item unabled"><Text className="fas fa-star"></Text></li>
-                  </ul>
+                  <View className="star-rating flx-align justify-content-end">
+                    <Text className="star-rating__item"><Text className="fas fa-star"></Text></Text>
+                    <Text className="star-rating__item"><Text className="fas fa-star"></Text></Text>
+                    <Text className="star-rating__item"><Text className="fas fa-star"></Text></Text>
+                    <Text className="star-rating__item"><Text className="fas fa-star"></Text></Text>
+                    <Text className="star-rating__item unabled"><Text className="fas fa-star"></Text></Text>
+                  </View>
                 </View>
                 <View className="testimonial-item">
                   <View className="testimonial-item__top flx-between">
@@ -42,13 +42,13 @@ const TestimonialsSection = () => {
                     <Image source="assets/images/icons/quote.svg" alt="" />
                   </View>
                   <Text className="testimonial-item__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, autem! Consectetur illo tempora sed repudiandae eaque velit expedita, ipsa earum explicabo libero, voluptatibus aliquid odio</Text>
-                  <ul className="star-rating flx-align justify-content-end">
-                    <li className="star-rating__item"><Text className="fas fa-star"></Text></li>
-                    <li className="star-rating__item"><Text className="fas fa-star"></Text></li>
-                    <li className="star-rating__item"><Text className="fas fa-star"></Text></li>
-                    <li className="star-rating__item"><Text className="fas fa-star"></Text></li>
-                    <li className="star-rating__item unabled"><Text className="fas fa-star"></Text></li>
-                  </ul>
+                  <View className="star-rating flx-align justify-content-end">
+                    <Text className="star-rating__item"><Text className="fas fa-star"></Text></Text>
+                    <Text className="star-rating__item"><Text className="fas fa-star"></Text></Text>
+                    <Text className="star-rating__item"><Text className="fas fa-star"></Text></Text>
+                    <Text className="star-rating__item"><Text className="fas fa-star"></Text></Text>
+                    <Text className="star-rating__item unabled"><Text className="fas fa-star"></Text></Text>
+                  </View>
                 </View>
               </View>
             </View>

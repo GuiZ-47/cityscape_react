@@ -9,7 +9,6 @@ const BannerSection = () => {
 
   return (
     <View style={styles.bannerVideo}>
-      //Video src="https://player.vimeo.com/external/263582970.hd.mp4?s=06ac4b713c0d5bff5071a615862f22c3e34adbc0&profile_id=174" loop muted autoplay class="banner-video__video" />
 
       <View className="container container-two">
         <View className="row justify-content-center">

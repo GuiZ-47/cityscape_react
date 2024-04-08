@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, TextInput, Button} from 'react-native';
+import {View, Text, Image, FlatList, TextInput, Button} from 'react-native';
 
 const TopFooter = () => {
   return (
@@ -42,13 +42,16 @@ const TopFooter = () => {
           <View className="col-xl-3 col-sm-6">
             <View className="footer-item">
               <Text className="footer-item__title">Services</Text>
-              <ul className="footer-menu">
-                <li className="footer-menu__item"><Text href="property.html" className="footer-menu__link">Reliable Rentals </Text></li>
-                <li className="footer-menu__item"><Text href="property.html" className="footer-menu__link">Golden Key Properties </Text></li>
-                <li className="footer-menu__item"><Text href="property.html" className="footer-menu__link">Swift Home Sales </Text></li>
-                <li className="footer-menu__item"><Text href="property.html" className="footer-menu__link">Elite Realty Services </Text></li>
-                <li className="footer-menu__item"><Text href="property.html" className="footer-menu__link">Dream Property Solutions </Text></li>
-              </ul>
+                <FlatList className="footer-menu"
+                    data={[
+                      {key: 'Reliable Rentals'},
+                      {key: 'Golden Key Properties'},
+                      {key: 'Swift Home Sales'},
+                      {key: 'Elite Realty Services'},
+                      {key: 'Dream Property Solutions'},
+                    ]}
+                    renderItem={({item}) => <View className="footer-menu__item"><Text href="property.html" className="footer-menu__link"></Text></View>}
+                />
             </View>
           </View>
           <View className="col-xl-1 d-xl-block d-none"></View>
@@ -57,20 +60,23 @@ const TopFooter = () => {
               <Text className="footer-item__title">Our gallery</Text>
               <Text className="footer-item__desc">It is a long established fact that  reader will be Elite Property </Text>
 
-              <form action="#" className="mt-4 subscribe-box">
+              <View action="#" className="mt-4 subscribe-box">
                 <View className="input-group">
                   <TextInput type="text" className="form-control common-input common-input--md text-white" placeholder="Your mail address" />
-                  <Button type="submit" className="px-4 input-group-text bg--gradient border-0 text-white"><Text className="fas fa-paper-plane"></Text></Button>
+                  <Button title="Suscribe to the newslettter" type="submit" className="px-4 input-group-text bg--gradient border-0 text-white"><Text className="fas fa-paper-plane"></Text></Button>
                 </View>
-              </form>
+              </View>
 
-              <ul className="social-list">
-                <li className="social-list__item"><Text href="https://www.facebook.com" className="social-list__link flx-center"><Text className="fab fa-facebook-f"></Text></Text> </li>
-                <li className="social-list__item"><Text href="https://www.twitter.com" className="social-list__link flx-center"> <Text className="fab fa-twitter"></Text></Text></li>
-                <li className="social-list__item"><Text href="https://www.linkedin.com" className="social-list__link flx-center"> <Text className="fab fa-linkedin-in"></Text></Text></li>
-                <li className="social-list__item"><Text href="https://www.pinterest.com" className="social-list__link flx-center"> <Text className="fab fa-instagram"></Text></Text></li>
-                <li className="social-list__item"><Text href="https://www.pinterest.com" className="social-list__link flx-center"> <Text className="fab fa-instagram"></Text></Text></li>
-              </ul>
+              <FlatList className="social-list"
+                data={[
+                  {key: 'Facebook'},
+                  {key: 'Twitter'},
+                  {key: 'LinkedIn'},
+                  {key: 'Pinterest'},
+                  {key: 'Instagram'},
+                ]}
+                renderItem={({item}) => <View className="social-list__item"><Text href="https://www.facebook.com" className="social-list__link flx-center"><Text className="fab fa-facebook-f"></Text></Text></View>}
+              />
             </View>
           </View>
         </View>

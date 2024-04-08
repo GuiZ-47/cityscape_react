@@ -7,12 +7,12 @@ import VideoPopUpSection from '../../Component/Home/VideoPopUpSection.js';
 import PortfolioSection from '../../Component/Home/PortfolioSection.js';
 import TestimonialsSection from '../../Component/Home/TestimonialsSection.js';
 import BlogSection from '../../Component/Home/BlogSection.js';
-import Footer from '../../Component/Partials/Footer.js';
-//import { StyleSheet, Text, View } from 'react-native';
+import Footer from '../Partials/Footer.jsx';
+import { StyleSheet, ScrollView } from 'react-native';
 
 const Home = () => {
   return (
-    <>
+    <ScrollView>
       <BannerSection />
       <AboutSection />
       <PropertySection />
@@ -22,7 +22,7 @@ const Home = () => {
       <TestimonialsSection />
       <BlogSection />
       <Footer />
-    </>
+    </ScrollView>
   );
 };
 

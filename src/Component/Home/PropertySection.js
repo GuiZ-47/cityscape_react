@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, FlatList} from 'react-native';
 
 const PropertySection = () => {
   return (
@@ -27,16 +27,16 @@ const PropertySection = () => {
                 <Text className="property-item__title"> <Text href="property-details.html" className="link">Paramount Investments Prestige Property Management </Text> </Text>
                 <Text className="property-item__location d-flex gap-2"> <Text className="icon"> <Text className="fas fa-map-marker-alt"></Text></Text> 66 Broklyant, New York America</Text>
                 <View className="property-item__bottom flx-between gap-2">
-                  <ul className="amenities-list flx-align">
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bed"></Text></Text>
-                      <Text className="text">3 Beds</Text>
-                    </li>
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bath"></Text></Text>
-                      <Text className="text">3 Baths</Text>
-                    </li>
-                  </ul>
+                  <FlatList className="amenities-list flx-align"
+                    data={[
+                      {key: '3 Beds'},
+                      {key: '3 Baths'},
+                    ]}
+                    renderItem={({item}) => <View className="amenities-list__item flx-align">
+                        <Text className="icon"><Text className="fas fa-bed"></Text></Text>
+                        <Text className="text">{item.key}</Text>
+                      </View>}
+                  />
                   <Text href="#" className="simple-btn">Book Now <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Text>
                 </View>
               </View>
@@ -55,16 +55,16 @@ const PropertySection = () => {
                 <Text className="property-item__title"> <Text href="property-details.html" className="link">Paramount Investments Prestige Property Management </Text> </Text>
                 <Text className="property-item__location d-flex gap-2"> <Text className="icon"> <Text className="fas fa-map-marker-alt"></Text></Text> 66 Broklyant, New York America</Text>
                 <View className="property-item__bottom flx-between gap-2">
-                  <ul className="amenities-list flx-align">
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bed"></Text></Text>
-                      <Text className="text">3 Beds</Text>
-                    </li>
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bath"></Text></Text>
-                      <Text className="text">3 Baths</Text>
-                    </li>
-                  </ul>
+                  <FlatList className="amenities-list flx-align"
+                    data={[
+                      {key: '3 Beds'},
+                      {key: '3 Baths'},
+                    ]}
+                    renderItem={({item}) => <View className="amenities-list__item flx-align">
+                        <Text className="icon"><Text className="fas fa-bed"></Text></Text>
+                        <Text className="text">{item.key}</Text>
+                      </View>}
+                  />
                   <Text href="#" className="simple-btn">Book Now <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Text>
                 </View>
               </View>
@@ -83,16 +83,16 @@ const PropertySection = () => {
                 <Text className="property-item__title"> <Text href="property-details.html" className="link">Paramount Investments Prestige Property Management </Text> </Text>
                 <Text className="property-item__location d-flex gap-2"> <Text className="icon"> <Text className="fas fa-map-marker-alt"></Text></Text> 66 Broklyant, New York America</Text>
                 <View className="property-item__bottom flx-between gap-2">
-                  <ul className="amenities-list flx-align">
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bed"></Text></Text>
-                      <Text className="text">3 Beds</Text>
-                    </li>
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bath"></Text></Text>
-                      <Text className="text">3 Baths</Text>
-                    </li>
-                  </ul>
+                  <FlatList className="amenities-list flx-align"
+                    data={[
+                      {key: '3 Beds'},
+                      {key: '3 Baths'},
+                    ]}
+                    renderItem={({item}) => <View className="amenities-list__item flx-align">
+                        <Text className="icon"><Text className="fas fa-bed"></Text></Text>
+                        <Text className="text">{item.key}</Text>
+                      </View>}
+                  />
                   <Text href="#" className="simple-btn">Book Now <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Text>
                 </View>
               </View>
@@ -111,16 +111,16 @@ const PropertySection = () => {
                 <Text className="property-item__title"> <Text href="property-details.html" className="link">Paramount Investments Prestige Property Management </Text> </Text>
                 <Text className="property-item__location d-flex gap-2"> <Text className="icon"> <Text className="fas fa-map-marker-alt"></Text></Text> 66 Broklyant, New York America</Text>
                 <View className="property-item__bottom flx-between gap-2">
-                  <ul className="amenities-list flx-align">
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bed"></Text></Text>
-                      <Text className="text">3 Beds</Text>
-                    </li>
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bath"></Text></Text>
-                      <Text className="text">3 Baths</Text>
-                    </li>
-                  </ul>
+                  <FlatList className="amenities-list flx-align"
+                    data={[
+                      {key: '3 Beds'},
+                      {key: '3 Baths'},
+                    ]}
+                    renderItem={({item}) => <View className="amenities-list__item flx-align">
+                        <Text className="icon"><Text className="fas fa-bed"></Text></Text>
+                        <Text className="text">{item.key}</Text>
+                      </View>}
+                  />
                   <Text href="#" className="simple-btn">Book Now <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Text>
                 </View>
               </View>
@@ -139,16 +139,16 @@ const PropertySection = () => {
                 <Text className="property-item__title"> <Text href="property-details.html" className="link">Paramount Investments Prestige Property Management </Text> </Text>
                 <Text className="property-item__location d-flex gap-2"> <Text className="icon"> <Text className="fas fa-map-marker-alt"></Text></Text> 66 Broklyant, New York America</Text>
                 <View className="property-item__bottom flx-between gap-2">
-                  <ul className="amenities-list flx-align">
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bed"></Text></Text>
-                      <Text className="text">3 Beds</Text>
-                    </li>
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bath"></Text></Text>
-                      <Text className="text">3 Baths</Text>
-                    </li>
-                  </ul>
+                  <FlatList className="amenities-list flx-align"
+                    data={[
+                      {key: '3 Beds'},
+                      {key: '3 Baths'},
+                    ]}
+                    renderItem={({item}) => <View className="amenities-list__item flx-align">
+                        <Text className="icon"><Text className="fas fa-bed"></Text></Text>
+                        <Text className="text">{item.key}</Text>
+                      </View>}
+                  />
                   <Text href="#" className="simple-btn">Book Now <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Text>
                 </View>
               </View>
@@ -167,16 +167,16 @@ const PropertySection = () => {
                 <Text className="property-item__title"> <Text href="property-details.html" className="link">Paramount Investments Prestige Property Management </Text> </Text>
                 <Text className="property-item__location d-flex gap-2"> <Text className="icon"> <Text className="fas fa-map-marker-alt"></Text></Text> 66 Broklyant, New York America</Text>
                 <View className="property-item__bottom flx-between gap-2">
-                  <ul className="amenities-list flx-align">
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bed"></Text></Text>
-                      <Text className="text">3 Beds</Text>
-                    </li>
-                    <li className="amenities-list__item flx-align">
-                      <Text className="icon"><Text className="fas fa-bath"></Text></Text>
-                      <Text className="text">3 Baths</Text>
-                    </li>
-                  </ul>
+                  <FlatList className="amenities-list flx-align"
+                    data={[
+                      {key: '3 Beds'},
+                      {key: '3 Baths'},
+                    ]}
+                    renderItem={({item}) => <View className="amenities-list__item flx-align">
+                        <Text className="icon"><Text className="fas fa-bed"></Text></Text>
+                        <Text className="text">{item.key}</Text>
+                      </View>}
+                  />
                   <Text href="#" className="simple-btn">Book Now <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Text>
                 </View>
               </View>

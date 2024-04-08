@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, FlatList} from 'react-native';
 
 const BlogSection = () => {
   return (
@@ -23,16 +23,16 @@ const BlogSection = () => {
               <View className="blog-item__inner">
                 <Text className="blog-item__date"> 09 <Text className="text">Mar</Text> </Text>
                 <View className="blog-item__content">
-                  <ul className="text-list flx-align">
-                    <li className="text-list__item font-12"> 
-                      <Text className="icon"><Text className="fas fa-user"></Text></Text> 
-                      <Text href="#" className="link">By admin</Text>
-                    </li>
-                    <li className="text-list__item font-12"> 
-                      <Text className="icon"><Text className="fas fa-comments"></Text></Text>  
-                      <Text href="#" className="link">Comments (05)</Text>
-                    </li>
-                  </ul>
+                  <FlatList className="text-list flx-align"
+                    data={[
+                      {key: 'By admin'},
+                      {key: 'Comments (05)'},
+                    ]}
+                    renderItem={({item}) => <View className="text-list__item font-12">
+                        <Text className="icon"><Text className="fas fa-user"></Text></Text>
+                        <Text href="#" className="link">{item.key}</Text>
+                      </View>}
+                  />
                   <Text className="blog-item__title">
                     <Text href="blog-details.html" className="blog-item__title-link border-effect"> Discover Endless Possibilities in Real Estate Live Your Best Life in a New Home </Text>
                   </Text>
@@ -53,16 +53,16 @@ const BlogSection = () => {
               <View className="blog-item__inner">
                 <Text className="blog-item__date"> 28 <Text className="text">Mar</Text> </Text>
                 <View className="blog-item__content">
-                  <ul className="text-list flx-align">
-                    <li className="text-list__item font-12"> 
-                      <Text className="icon"><Text className="fas fa-user"></Text></Text> 
-                      <Text href="#" className="link">By admin</Text>
-                    </li>
-                    <li className="text-list__item font-12"> 
-                      <Text className="icon"><Text className="fas fa-comments"></Text></Text>  
-                      <Text href="#" className="link">Comments (05)</Text>
-                    </li>
-                  </ul>
+                  <FlatList className="text-list flx-align"
+                    data={[
+                      {key: 'By admin'},
+                      {key: 'Comments (05)'},
+                    ]}
+                    renderItem={({item}) => <View className="text-list__item font-12">
+                        <Text className="icon"><Text className="fas fa-user"></Text></Text>
+                        <Text href="#" className="link">{item.key}</Text>
+                      </View>}
+                  />
                   <Text className="blog-item__title">
                     <Text href="blog-details.html" className="blog-item__title-link border-effect"> Turn Your Real Estate Dreams Into Reality Embrace the Real Estate Lifestyle </Text>
                   </Text>
@@ -83,16 +83,16 @@ const BlogSection = () => {
               <View className="blog-item__inner">
                 <Text className="blog-item__date"> 16 <Text className="text">Mar</Text> </Text>
                 <View className="blog-item__content">
-                  <ul className="text-list flx-align">
-                    <li className="text-list__item font-12"> 
-                      <Text className="icon"><Text className="fas fa-user"></Text></Text> 
-                      <Text href="#" className="link">By admin</Text>
-                    </li>
-                    <li className="text-list__item font-12"> 
-                      <Text className="icon"><Text className="fas fa-comments"></Text></Text>  
-                      <Text href="#" className="link">Comments (05)</Text>
-                    </li>
-                  </ul>
+                  <FlatList className="text-list flx-align"
+                    data={[
+                      {key: 'By admin'},
+                      {key: 'Comments (05)'},
+                    ]}
+                    renderItem={({item}) => <View className="text-list__item font-12">
+                        <Text className="icon"><Text className="fas fa-user"></Text></Text>
+                        <Text href="#" className="link">{item.key}</Text>
+                      </View>}
+                  />
                   <Text className="blog-item__title">
                     <Text href="blog-details.html" className="blog-item__title-link border-effect"> Discover Endless Possibilities in Real Estate Live Your Best Life in a New Home </Text>
                   </Text>
