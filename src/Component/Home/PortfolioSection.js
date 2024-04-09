@@ -11,7 +11,7 @@ const PortfolioSection = () => {
       <View className="portfolio-wrapper">
         <View className="portfolio-item">
           <View className="portfolio-item__thumb">
-            <Image source="assets/images/thumbs/portfolio1.png" alt="" className="cover-img" />
+            <Image source={require('../../../assets/images/thumbs/portfolio1.png')} alt="" className="cover-img" />
           </View>
           <View className="portfolio-item__content">
             <Text href="portfolio-details.html" className="btn btn-icon"> 
@@ -29,7 +29,7 @@ const PortfolioSection = () => {
         </View> 
         <View className="portfolio-item">
           <View className="portfolio-item__thumb">
-            <Image source="assets/images/thumbs/portfolio2.png" alt="" className="cover-img" />
+            <Image source={require('../../../assets/images/thumbs/portfolio2.png')} alt="" className="cover-img" />
           </View>
           <View className="portfolio-item__content">
             <Text href="portfolio-details.html" className="btn btn-icon"> 
@@ -47,7 +47,7 @@ const PortfolioSection = () => {
         </View> 
         <View className="portfolio-item">
           <View className="portfolio-item__thumb">
-            <Image source="assets/images/thumbs/portfolio3.png" alt="" className="cover-img" />
+            <Image source={require('../../../assets/images/thumbs/portfolio3.png')} alt="" className="cover-img" />
           </View>
           <View className="portfolio-item__content">
             <Text href="portfolio-details.html" className="btn btn-icon"> 
@@ -65,7 +65,7 @@ const PortfolioSection = () => {
         </View> 
         <View className="portfolio-item">
           <View className="portfolio-item__thumb">
-            <Image source="assets/images/thumbs/portfolio4.png" alt="" className="cover-img" />
+            <Image source={require('../../../assets/images/thumbs/portfolio4.png')} alt="" className="cover-img" />
           </View>
           <View className="portfolio-item__content">
             <Text href="portfolio-details.html" className="btn btn-icon"> 

@@ -17,7 +17,7 @@ const BlogSection = () => {
             <View className="blog-item">
               <View className="blog-item__thumb">
                 <Text href="blog-details.html" className="blog-item__thumb-link">
-                  <Image source="assets/images/thumbs/blog1.png" className="cover-img" alt="" />
+                  <Image source={require('../../../assets/images/thumbs/blog1.png')} className="cover-img" alt="" />
                 </Text>
               </View>
               <View className="blog-item__inner">
@@ -47,7 +47,7 @@ const BlogSection = () => {
             <View className="blog-item">
               <View className="blog-item__thumb">
                 <Text href="blog-details.html" className="blog-item__thumb-link">
-                  <Image source="assets/images/thumbs/blog2.png" className="cover-img" alt="" />
+                  <Image source={require('../../../assets/images/thumbs/blog2.png')} className="cover-img" alt="" />
                 </Text>
               </View>
               <View className="blog-item__inner">
@@ -77,7 +77,7 @@ const BlogSection = () => {
             <View className="blog-item">
               <View className="blog-item__thumb">
                 <Text href="blog-details.html" className="blog-item__thumb-link">
-                  <Image source="assets/images/thumbs/blog3.png" className="cover-img" alt="" />
+                  <Image source={require('../../../assets/images/thumbs/blog3.png')} className="cover-img" alt="" />
                 </Text>
               </View>
               <View className="blog-item__inner">

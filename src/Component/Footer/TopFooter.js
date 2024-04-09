@@ -9,7 +9,7 @@ const TopFooter = () => {
           <View className="col-xl-4 col-lg-6">
             <View className="footer-item">
               <View className="footer-item__logo">
-                <Text href="index.html"> <Image src="assets/images/logo/white-logo.png" alt="" /></Text>
+                <Text href="index.html"> <Image source={require('../../../assets/images/logo/white-logo.png')} alt="" /></Text>
               </View>
               <Text className="footer-item__desc">It is a long established fact that a reader will be distracted</Text>
                     

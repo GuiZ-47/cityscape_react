@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, StyleSheet} from 'react-native';
 
 const CounterFiveSection = () => {
   return (
@@ -8,7 +8,7 @@ const CounterFiveSection = () => {
         <View className="counter-five-wrapper">
           <View className="counter-five-item style-two d-flex align-items-center">
             <Text className="counter-five-item__icon">
-              <Image source="assets/images/icons/counter-five-icon1.svg" alt="" />
+              <Image source={require('../../../assets/images/icons/counter-five-icon1.svg')} alt="" />
             </Text>
             <View className="counter-five-item__content">
               <Text className="counter-five-item__number text-heading">200+</Text>
@@ -17,7 +17,7 @@ const CounterFiveSection = () => {
           </View>
           <View className="counter-five-item style-two d-flex align-items-center">
             <Text className="counter-five-item__icon">
-              <Image source="assets/images/icons/counter-five-icon2.svg" alt="" />
+              <Image source={require('../../../assets/images/icons/counter-five-icon2.svg')} alt="" />
             </Text>
             <View className="counter-five-item__content">
               <Text className="counter-five-item__number text-heading">20+</Text>
@@ -26,7 +26,7 @@ const CounterFiveSection = () => {
           </View>
           <View className="counter-five-item style-two d-flex align-items-center">
             <Text className="counter-five-item__icon">
-              <Image source="assets/images/icons/counter-five-icon3.svg" alt="" />
+              <Image source={require('../../../assets/images/icons/counter-five-icon3.svg')} alt="" />
             </Text>
             <View className="counter-five-item__content">
               <Text className="counter-five-item__number text-heading">10k</Text>
@@ -35,7 +35,7 @@ const CounterFiveSection = () => {
           </View>
           <View className="counter-five-item style-two d-flex align-items-center">
             <Text className="counter-five-item__icon">
-              <Image source="assets/images/icons/counter-five-icon4.svg" alt="" />
+              <Image source={require('../../../assets/images/icons/counter-five-icon4.svg')} alt="" />
             </Text>
             <View className="counter-five-item__content">
               <Text className="counter-five-item__number text-heading">90k</Text>
@@ -47,5 +47,29 @@ const CounterFiveSection = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  counterFive: {
+    
+  },
+  container: {
+    
+  },
+  counterFiveItem: {
+    
+  },
+  counterFiveItemIcon: {
+    
+  },
+  counterFiveItemContent: {
+    
+  },
+  counterFiveItemNumber: {
+    
+  },
+  counterFiveItemText: {
+    
+  },
+});
 
 export default CounterFiveSection;

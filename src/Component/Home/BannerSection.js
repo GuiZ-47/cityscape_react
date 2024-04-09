@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import Video, {VideoRef} from 'react-native-video';
 
 const BannerSection = () => {
-  /*useEffect(() => {
-    intersectingAnimation();
-  }, []);*/
-
   return (
     <View style={styles.bannerVideo}>
-
       <View style={styles.container}>
         <View style={styles.bannerVideoContent}>
           <Text style={styles.bannerVideoSubtitle}>FinTech Fusion</Text>
@@ -23,20 +17,16 @@ const BannerSection = () => {
 
 const styles = StyleSheet.create({
   bannerVideo: {
-    backgroundColor: 'lightgray',
+    padding: 10,
+    backgroundColor: '#F7F7F7',
     width: '100%',
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingRight: 'calc(1.5 * 0.5)',
-    paddingLeft: 'calc(1.5 * 0.5)',
-    marginRight: 'auto',
-    marginLeft: 'auto',
+    justifyContent: 'center'
  },
   container: {
     width: '100%',
     flexWrap: 'wrap',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   bannerVideoContent: {
     textAlign: 'center',
@@ -44,31 +34,30 @@ const styles = StyleSheet.create({
   },
   bannerVideoSubtitle: {
     textAlign: 'center',
-    color: 'white',
+    color: '#8A888D',
     padding: 10,
     borderRadius: 3,
     marginBottom: 10,
     letterSpacing: 0.11,
     fontSize: 20,
-    textTransform: 'uppercase',
+    textTransform: 'uppercase'
   },
   bannerVideoTitle: {
     textAlign: 'center',
-    marginTop: 8,
-    marginBottom: 32,
-    color: 'white',
+    color: '#8A888D',
+    marginTop: '8px',
+    marginBottom: '32px',
     fontSize: 22,
-    fontWeight: '400',
+    fontWeight: '400'
   },
   bannerVideoDesc: {
-    alignItems: 'center',
     textAlign: 'center',
-    color: 'white',
+    color: '#8A888D',
     maxWidth: '600px',
     margin: '0 auto',
     fontSize: 18,
-    fontWeight: '300',
-  },  
+    fontWeight: '300'
+  }
 });
 
 export default BannerSection;

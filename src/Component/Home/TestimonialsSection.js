@@ -22,7 +22,7 @@ const TestimonialsSection = () => {
                       <Text className="testimonial-item__name">Sakib Fahad</Text>
                       <Text className="testimonial-item__designation">Content Creator</Text>
                     </View>
-                    <Image source="assets/images/icons/quote.svg" alt="" />
+                    <Image source={require('../../../assets/images/icons/quote.svg')} alt="" />
                   </View>
                   <Text className="testimonial-item__desc">Their product exceeded his my routi  expectations. The the quality and attention to detail a the a moutstanding and it has become an essential most a education the a man who can do tant clearly</Text>
                   <View className="star-rating flx-align justify-content-end">
@@ -39,7 +39,7 @@ const TestimonialsSection = () => {
                       <Text className="testimonial-item__name">John Doe</Text>
                       <Text className="testimonial-item__designation">Frontend Developer</Text>
                     </View>
-                    <Image source="assets/images/icons/quote.svg" alt="" />
+                    <Image source={require('../../../assets/images/icons/quote.svg')} alt="" />
                   </View>
                   <Text className="testimonial-item__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, autem! Consectetur illo tempora sed repudiandae eaque velit expedita, ipsa earum explicabo libero, voluptatibus aliquid odio</Text>
                   <View className="star-rating flx-align justify-content-end">
@@ -54,7 +54,7 @@ const TestimonialsSection = () => {
             </View>
             <View className="col-lg-6">
               <View className="testimonial-thumb">
-                <Image source="assets/images/thumbs/testimonial-img.png" alt="" className="cover-img" />
+                <Image source={require('../../../assets/images/thumbs/testimonial-img.png')} alt="" className="cover-img" />
               </View>
             </View>
           </View>

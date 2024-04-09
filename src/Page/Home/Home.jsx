@@ -12,7 +12,7 @@ import { StyleSheet, ScrollView } from 'react-native';
 
 const Home = () => {
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.contentContainer}>
       <BannerSection />
       <AboutSection />
       <PropertySection />
@@ -25,5 +25,14 @@ const Home = () => {
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    backgroundColor: '#F7F7F7',
+    margin: 15,
+    padding: 0,
+    alignItems: 'center'
+  }
+});
 
 export default Home;
