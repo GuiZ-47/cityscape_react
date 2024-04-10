@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, FlatList} from 'react-native';
+import {View, Text, Image, FlatList, StyleSheet} from 'react-native';
 
 const BlogSection = () => {
   return (
@@ -108,5 +108,50 @@ const BlogSection = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  blog: {
+    paddingTop: '30px',
+    paddingBottom: '60px'
+  },
+    container: {
+    width: '100%',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
+  },
+  sectionHeading: {
+    marginBottom: '30px',
+    textAlign: 'left',
+    marginLeft: 0,
+    maxWidth: '630px',
+    marginRight: 'auto'
+  },
+  sectionHeadingInner: {
+    maxWidth: '630px',
+  },
+  sectionHeadingSubtitle: {
+    textAlign: 'center',
+    color: 'white',
+    padding: 10,
+    borderRadius: 3,
+    marginBottom: 10,
+    letterSpacing: 0.11,
+    fontSize: 20,
+    textTransform: 'uppercase'
+  },
+  textGradient: {
+    color: '#FD7E14',
+    backgroundClip: 'text',
+    transition: 'background 0.3s ease-in-out',
+    fontWeight: '600'
+  },
+  sectionHeadingTitle: {
+    position: 'relative',
+    marginBottom: 0
+  },
+  btn: {
+    
+  },
+});
 
 export default BlogSection;

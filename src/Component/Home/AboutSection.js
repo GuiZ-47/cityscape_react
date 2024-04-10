@@ -6,37 +6,43 @@ const AboutSection = () => {
   return (
     <View style={styles.about}>
       <View style={styles.container}>
-        <View style={styles.aboutThumb}>
-          <Image source={require('../../../assets/images/thumbs/about-img.png')} style={styles.coverImg} alt="" />
-          <View style={styles.clientStatistics}>
-            <Text style={styles.clientStatisticsIcon}></Text>
-            <View style={styles.clientStatisticsContent}>
-              <Text style={styles.clientStatisticsNumber}>4,000+</Text>
-              <Text style={styles.clientStatisticsText}>Satisfied Clients</Text>
+        <View style={styles.row}>
+          <View style={styles.col}>
+            <View style={styles.aboutThumb}>
+              <Image source={require('../../../assets/images/thumbs/about-img.png')} style={styles.coverImg} alt="" />
+              <View style={styles.clientStatistics}>
+                <Text style={styles.clientStatisticsIcon}></Text>
+                <View style={styles.clientStatisticsContent}>
+                  <Text style={styles.clientStatisticsNumber}>4,000+</Text>
+                  <Text style={styles.clientStatisticsText}>Satisfied Clients</Text>
+                </View>
+              </View>
             </View>
           </View>
-        </View>
-        <View style={styles.aboutContent}>
-          <View style={styles.sectionHeading}>
-            <Text style={styles.sectionHeadingSubtitle}> <Text style={styles.textGradient}>About Us</Text> </Text>
-            <Text style={styles.sectionHeadingTitle}>Stay with us feel at home Your perfect stay awaits</Text>
-            <Text style={styles.sectionHeadingDesc}>Real Estate is a vast industry that deals with the buying, selling, and renting of properties. It inv transactions related to residential</Text>
-          </View>
-          <View style={styles.aboutBox}>
-            <View style={styles.aboutBoxIcon}>
-              <SvgUri
-                width="100%"
-                height="100%"
-                uri={require('../../../assets/images/icons/about-icon.svg')}
-              />
+          <View style={styles.col}>
+            <View style={styles.aboutContent}>
+              <View style={styles.sectionHeading}>
+                <Text style={styles.sectionHeadingSubtitle}> <Text style={styles.textGradient}>About Us</Text> </Text>
+                <Text style={styles.sectionHeadingTitle}>Stay with us feel at home Your perfect stay awaits</Text>
+                <Text style={styles.sectionHeadingDesc}>Real Estate is a vast industry that deals with the buying, selling, and renting of properties. It inv transactions related to residential</Text>
+              </View>
+              <View style={styles.aboutBox}>
+                <View style={styles.aboutBoxIcon}>
+                  <SvgUri
+                    width="100%"
+                    height="100%"
+                    uri={require('../../../assets/images/icons/about-icon.svg')}
+                  />
+                </View>
+                <View style={styles.aboutBoxContent}>
+                  <Text style={styles.aboutBoxTitle}>Your Dream Home Awaits</Text>
+                  <Text style={styles.aboutBoxDesc}>Real Estate is a vast industry that deals with the buying, selling, and renting of properties. It inv transactions related to residential, commercial, and industrial properties</Text>
+                </View>
+              </View>
+              <View style={styles.aboutButton}>
+                <Text href="#" style={styles.btn}>Learn More</Text>
+              </View>
             </View>
-            <View style={styles.aboutBoxContent}>
-              <Text style={styles.aboutBoxTitle}>Your Dream Home Awaits</Text>
-              <Text style={styles.aboutBoxDesc}>Real Estate is a vast industry that deals with the buying, selling, and renting of properties. It inv transactions related to residential, commercial, and industrial properties</Text>
-            </View>
-          </View>
-          <View style={styles.aboutButton}>
-            <Text href="#" style={styles.btn}>Learn More</Text>
           </View>
         </View>
       </View>
@@ -51,12 +57,27 @@ const styles = StyleSheet.create({
     padding: '60px',
     margin: '50px',
     justifyContent: 'center'
- },
+  },
   container: {
     width: '100%',
     flexWrap: 'wrap',
     justifyContent: 'center'
   },
+  row: {
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginTop: 'calc(-1 * 1.5)',
+    marginRight: 'calc(-.5 * 1.5)',
+    marginLeft: 'calc(-.5 * 1.5)'
+  },
+  col: {
+    flexShrink: 0,
+    width: '100%',
+    maxWidth: '100%',
+    paddingRight: 'calc(1.5 * .5)',
+    paddingLeft: 'calc(1.5 * .5)',
+    marginTop: 0 
+ },
   aboutThumb: {
   position: 'relative',
   zIndex: 1,
@@ -128,7 +149,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     maxWidth: '750px',
     marginRight: 'auto'
-  },  
+  },
   aboutBox: {
     borderRadius: 5,
     border: '2px solid lightgray',

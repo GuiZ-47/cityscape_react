@@ -6,7 +6,7 @@ const PropertySection = () => {
   
   for (let i = 0; i < 6; i++) {
     myLoop.push(
-      <View className="col-lg-4 col-sm-6">
+      <View style={styles.col}>
         <View style={styles.propertyItem}>
           <View style={styles.propertyItemThumb}>
             <Text href="property-details.html" style={styles.link}>
@@ -26,7 +26,7 @@ const PropertySection = () => {
                 ]}
                 renderItem={({item}) => <View style={styles.amenitiesListItem}>
                   <Text className="icon"><Text className="fas fa-bed"></Text></Text>
-                        <Text className="text">{item.key}</Text>
+                        <Text style={styles.text}>{item.key}</Text>
                       </View>}
               />
               <Text href="#" style={styles.simpleBtn}>Book Now <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Text>
@@ -48,7 +48,7 @@ const PropertySection = () => {
           <Text href="#" style={styles.btn}>View More <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Text>
         </View>
 
-        <View className="row gy-4">
+        <View style={styles.row}>
           {myLoop}
         </View>
         <View style={styles.propertyBtn}>
@@ -60,8 +60,16 @@ const PropertySection = () => {
 };
 
 const styles = StyleSheet.create({
+  col: {
+    flexShrink: 0,
+    width: '100%',
+    maxWidth: '100%',
+    paddingRight: 'calc(1.5 * .5)',
+    paddingLeft: 'calc(1.5 * .5)',
+    marginTop: 1.5
+  },
   propertyItem: {
-    backgroundColor: 'white',
+    backgroundColor: '#211F1F',
     borderRadius: 5,
     overflow: 'hidden',
     position: 'relative',
@@ -120,15 +128,20 @@ const styles = StyleSheet.create({
     gap: 0.5
   },
   amenitiesList: {
+    color: 'white',
     gap: 20,
     flexWrap: 'wrap'
   },
   amenitiesListItem: {
+    color: 'white',
     fontSize: 0.75,
     opacity: 0.8,
     fontWeight: '300',
     flexWrap: 'wrap',
     gap: 10
+  },
+  text: {
+    color: 'white'
   },
   simpleBtn: {
     fontSize: 0.75,
@@ -179,6 +192,12 @@ const styles = StyleSheet.create({
   },
   sectionHeadingTitle: {
     color: 'white'
+  },
+  row: {
+    flexWrap: 'wrap',
+    marginTop: 'calc(-1 * 1.5)',
+    marginRight: 'calc(-.5 * 1.5)',
+    marginLeft: 'calc(-.5 * 1.5)'
   },
   propertyBtn: {
     marginTop: 'clamp(1.5rem, -1.239rem + 5.705vw, 3.75rem)',

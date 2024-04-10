@@ -5,10 +5,14 @@ const BannerSection = () => {
   return (
     <View style={styles.bannerVideo}>
       <View style={styles.container}>
-        <View style={styles.bannerVideoContent}>
-          <Text style={styles.bannerVideoSubtitle}>FinTech Fusion</Text>
-          <Text style={styles.bannerVideoTitle}>Land Organization find your fantasy house with us</Text>
-          <Text style={styles.bannerVideoDesc}>Unlock the Power of Real Estate Making Your Real Estate Dreams a Reality Real Estate here Unlock the Power of Real Estate</Text>
+        <View style={styles.row}>
+          <View style={styles.col}>
+            <View style={styles.bannerVideoContent}>
+              <Text style={styles.bannerVideoSubtitle}>FinTech Fusion</Text>
+              <Text style={styles.bannerVideoTitle}>Land Organization find your fantasy house with us</Text>
+              <Text style={styles.bannerVideoDesc}>Unlock the Power of Real Estate Making Your Real Estate Dreams a Reality Real Estate here Unlock the Power of Real Estate</Text>
+            </View>
+          </View>
         </View>
       </View>
     </View>
@@ -27,6 +31,21 @@ const styles = StyleSheet.create({
     width: '100%',
     flexWrap: 'wrap',
     justifyContent: 'center'
+  },
+  row: {
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    marginTop: 'calc(-1 * 0)',
+    marginRight: 'calc(-.5 * 1.5)',
+    marginLeft: 'calc(-.5 * 1.5)'
+  },
+  col: {
+    flexShrink: 0,
+    width: '100%',
+    maxWidth: '100%',
+    paddingRight: 'calc(1.5 * .5)',
+    paddingLeft: 'calc(1.5 * .5)',
+    marginTop: 0
   },
   bannerVideoContent: {
     textAlign: 'center',
