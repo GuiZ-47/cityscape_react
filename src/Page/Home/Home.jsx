@@ -8,9 +8,9 @@ import PortfolioSection from '../../Component/Home/PortfolioSection.js';
 import TestimonialsSection from '../../Component/Home/TestimonialsSection.js';
 import BlogSection from '../../Component/Home/BlogSection.js';
 import Footer from '../Partials/Footer.jsx';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, TouchableHighlight, Image } from 'react-native';
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <BannerSection />
