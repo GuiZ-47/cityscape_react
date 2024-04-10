@@ -1,5 +1,8 @@
 import React from 'react';
+
 import Home from './src/Page/Home/Home.jsx';
+import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage.jsx';
+
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -11,17 +14,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="PropertyDetails" component={PropertyDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
-
-//pas besoin ?
-//const styles = StyleSheet.create({
-//  container: {
-//    flex: 1,
-//    backgroundColor: '#fff',
-//    alignItems: 'center',
-//    justifyContent: 'center',
-//  },
-//});
