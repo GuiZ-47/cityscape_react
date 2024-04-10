@@ -19,7 +19,7 @@
 
    
     "react-native-svg": "^15.1.0",
-    "react-native-webview": "^13.8.4"
+    "react-native-webview": "^13.8.4",
 
     "react-native": "^0.73.6",
     "react-native-link": "^4.1.0",
