@@ -1,0 +1,84 @@
+import React from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
+
+const Breadcrumb = ({ properties }) => {
+  return (
+    <View style={styles.breadcrumb}>
+      <Image
+        source={require('./assets/images/thumbs/breadcrumb-img.png')}
+        style={styles.breadcrumbImg}
+      />
+      <View style={styles.container}>
+        <View style={styles.row}>
+          <View style={styles.col}>
+            <View style={styles.breadcrumbWrapper}>
+              <Text style={styles.breadcrumbTitle}>
+                {properties[0].Category.parent.name} {properties[0].Category.name}
+              </Text>
+              <View style={styles.breadcrumbList}>
+                <View style={styles.breadcrumbItem}>
+                  <Text style={styles.breadcrumbLink}>
+                    <Text style={styles.homeIcon}>🏠</Text>
+                    Accueil
+                  </Text>
+                </View>
+                <View style={styles.breadcrumbItem}>
+                  <Text style={styles.angleRightIcon}>›</Text>
+                </View>
+                <View style={styles.breadcrumbItem}>
+                  <Text style={styles.breadcrumbItemText}>
+                    {properties[0].Category.parent.name} {properties[0].Category.name}
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  breadcrumb: {
+    paddingVertical: 120,
+  },
+  breadcrumbImg: {
+    // Styles for the image
+  },
+  container: {
+    // Styles for the container
+  },
+  row: {
+    // Styles for the row
+  },
+  col: {
+    // Styles for the column
+  },
+  breadcrumbWrapper: {
+    // Styles for the breadcrumb wrapper
+  },
+  breadcrumbTitle: {
+    // Styles for the breadcrumb title
+  },
+  breadcrumbList: {
+    // Styles for the breadcrumb list
+  },
+  breadcrumbItem: {
+    // Styles for the breadcrumb item
+  },
+  breadcrumbLink: {
+    // Styles for the breadcrumb link
+  },
+  homeIcon: {
+    // Styles for the home icon
+  },
+  angleRightIcon: {
+    // Styles for the angle right icon
+  },
+  breadcrumbItemText: {
+    // Styles for the breadcrumb item text
+  },
+});
+
+export default Breadcrumb;
