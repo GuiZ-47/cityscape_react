@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet,Image, } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const MobileMenu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+import { useNavigation } from '@react-navigation/native';
 
+export default function MobileMenu () {
+
+// https://reactnavigation.org/docs/use-navigation
+  const navigation = useNavigation();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -16,8 +21,11 @@ const MobileMenu = () => {
         {/* Logo */}
         <View style={styles.logo}>
           <TouchableOpacity onPress={() => console.log('Logo pressed')}>
-            {/* Remplacez le chemin de l'image par votre propre logo */}
-            <Ionicons name="logo-react" size={32} color="black" />
+            {/* Mettre ici l'image du logo de cityscape !!!! */}
+            <Image
+                source={require('./../../../assets/images/logo/logo.png')}
+                style={styles.image}
+            />
           </TouchableOpacity>
         </View>
         {/* Bouton de menu mobile */}
@@ -35,14 +43,11 @@ const MobileMenu = () => {
           {/* Contenu du menu */}
           <View style={styles.menuContent}>
             {/* Ajoutez vos éléments de menu ici */}
-              <TouchableOpacity onPress={console.log('coucou')}>
-                <Text> Menu Item 1 </Text>
+              <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <Text style={styles.textLien}> Home </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={console.log('coucou')}>
-                <Text> Menu Item 2 </Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={console.log('coucou')}>
-                <Text> Menu Item 3 </Text>
+              <TouchableOpacity onPress={() => navigation.navigate('PropertyDetails')}>
+                <Text style={styles.textLien}> PropertyDetails </Text>
               </TouchableOpacity>
           </View>
         </View>
@@ -54,26 +59,25 @@ const MobileMenu = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop : 40,
     zIndex:10,
-
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 10,
-    paddingTop: 10,
+    paddingTop: 5,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
-    backgroundColor : 'grey'
-
+    backgroundColor : 'grey',
+    height : 50,
   },
   logo: {
     flex: 1,
   },
   menuButton: {
   height: '100%',
+  paddingTop : 5,
   },
   mobileMenu: {
     position: 'absolute',
@@ -94,8 +98,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     zIndex:20,
     backgroundColor : 'white',
-    height : 200,
-
+    height : 100,
   },
   sellButton: {
     backgroundColor: 'blue',
@@ -110,6 +113,10 @@ const styles = StyleSheet.create({
     color: 'white',
     marginRight: 5,
   },
+    image: {
+      resizeMode: 'cover',
+    },
+    textLien :{
+        fontSize : 20,
+    },
 });
-
-export default MobileMenu;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text,ScrollView,} from 'react-native';
+import {Text,ScrollView,StyleSheet,} from 'react-native';
 
 
 import PicturePropertyDetails from "./../../Component/PropertyDetails/PicturePropertyDetailsComponent"
@@ -16,8 +16,9 @@ import MobileMenu from "./../../Component/Header/HeaderComponent"
 
 export default function PropertyDetails() {
   return (
-  <ScrollView>
-    < MobileMenu />
+  <>
+  < MobileMenu />
+  <ScrollView contentContainerStyle={styles.contentContainer}>
     < Breadcrumb />
     < PicturePropertyDetails />
     < PreviewPropertyDetails />
@@ -29,6 +30,13 @@ export default function PropertyDetails() {
     < OtherPropertiesPropertyDetails />
     < SubscribeToNewsletter />
   </ScrollView>
+  </>
 
 );
 };
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingTop: 40,
+  }
+});
