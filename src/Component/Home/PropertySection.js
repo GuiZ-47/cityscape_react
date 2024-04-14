@@ -1,17 +1,25 @@
 import React from 'react';
-import {View, Text, Image, FlatList, Button, StyleSheet} from 'react-native';
+import {View, TouchableHighlight, Text, Image, FlatList, Button, StyleSheet} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from '../../Page/Home/Home.jsx';
 
-const PropertySection = () => {
-  let myLoop = [];
+const PropertySection = ({ PropertySection }) => {
+  const navigation = useNavigation();
+  let properties = [];
   
   for (let i = 0; i < 6; i++) {
-    myLoop.push(
+    properties.push(
       <View style={styles.col}>
         <View style={styles.propertyItem}>
           <View style={styles.propertyItemThumb}>
-            <Text href="property-details.html" style={styles.link}>
-              <Image source={require('../../../assets/images/thumbs/property-1.png')} alt="" className="cover-img" />
-            </Text>
+            <TouchableHighlight
+              style={styles.link}
+              activeOpacity={0.6}
+              underlayColor="#DDDDDD"
+              onPress={() => navigation.navigate('PropertyDetails')}>
+                <Image source={require('../../../assets/images/thumbs/property-1.png')} alt="" className="cover-img" />
+            </TouchableHighlight>
             <Text style={styles.propertyItemBadge}>Sale</Text>
           </View>
           <View style={styles.propertyItemContent}>
@@ -47,9 +55,8 @@ const PropertySection = () => {
           </View>
           <Text href="#" style={styles.btn}>View More <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Text>
         </View>
-
         <View style={styles.row}>
-          {myLoop}
+          {properties}
         </View>
         <View style={styles.propertyBtn}>
           <Button title="Sell All Listing" color='#FD7E14' href="#" style={styles.btn}>  <Text className="icon-right"> <Text className="fas fa-arrow-right"></Text> </Text> </Button>

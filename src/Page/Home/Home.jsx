@@ -1,4 +1,7 @@
 import React from 'react';
+import { StyleSheet, ScrollView } from 'react-native';
+
+import MobileMenu from "./../../Component/Header/HeaderComponent";
 import BannerSection from '../../Component/Home/BannerSection.js';
 import AboutSection from '../../Component/Home/AboutSection.js';
 import PropertySection from '../../Component/Home/PropertySection.js';
@@ -8,13 +11,11 @@ import PortfolioSection from '../../Component/Home/PortfolioSection.js';
 import TestimonialsSection from '../../Component/Home/TestimonialsSection.js';
 import BlogSection from '../../Component/Home/BlogSection.js';
 import Footer from '../Partials/Footer.jsx';
-import { StyleSheet, ScrollView } from 'react-native';
-import MobileMenu from "./../../Component/Header/HeaderComponent";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
   <>
-    < MobileMenu />
+    <MobileMenu />
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <BannerSection />
       <AboutSection />

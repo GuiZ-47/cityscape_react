@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Home from './src/Page/Home/Home.jsx';
-import Property from './src/Page/Property/Property';
+import Property from './src/Page/Property/Property.jsx';
 import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage.jsx';
 
 import { StatusBar } from 'expo-status-bar';
@@ -22,4 +22,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
