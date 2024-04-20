@@ -16,17 +16,17 @@ const Home = ({ navigation }) => {
   return (
   <>
     <MobileMenu />
-    <ScrollView contentContainerStyle={styles.contentContainer}>
-      <BannerSection />
-      <AboutSection />
-      <PropertySection />
-      <CounterFiveSection />
-      <VideoPopUpSection />
-      <PortfolioSection />
-      <TestimonialsSection />
-      <BlogSection />
-      <Footer />
-    </ScrollView>
+{/*     <ScrollView contentContainerStyle={styles.contentContainer}> */}
+{/*       <BannerSection /> */}
+{/*       <AboutSection /> */}
+{/*       <PropertySection /> */}
+{/*       <CounterFiveSection /> */}
+{/*       <VideoPopUpSection /> */}
+{/*       <PortfolioSection /> */}
+{/*       <TestimonialsSection /> */}
+{/*       <BlogSection /> */}
+{/*       <Footer /> */}
+{/*     </ScrollView> */}
   </>
   );
 };

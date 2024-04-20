@@ -5,47 +5,46 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import { SvgXml } from 'react-native-svg';
 import SVG from "./../SVG/SvgComponent"
 
-const PreviewPropertyDetails = () => {
+const PreviewPropertyDetails = ({propertyDetails}) => {
   return (
     <View style={styles.propertyDetailsItem}>
-      <Text style={styles.title}>Preview</Text>
+      <Text style={styles.title}>Preview of the "{propertyDetails[0].propTitle}" property : </Text>
       <View style={styles.content}>
         <View style={styles.row}>
           <DetailItem
             xml={SVG.room}
             text="Room"
-            title="4 Room"
+            title={" " + propertyDetails[0].propRooms + " Rooms"}
           />
           <DetailItem
             xml={SVG.bed}
             text="Bed"
-            title="3 Beds"
+            title={" " + propertyDetails[0].propBeds + " Beds"}
           />
-
         </View>
 
         <View style={styles.row}>
         <DetailItem
                    xml={SVG.bath}
                     text="Bath"
-                    title="2 Baths"
+                    title={" " + propertyDetails[0].propBaths + " Baths"}
                   />
           <DetailItem
             xml={SVG.space}
             text="Space"
-            title="3 Space"
+            title={" " + propertyDetails[0].propSpaces + " Spaces"}
           />
           </View>
           <View style={styles.row}>
           <DetailItem
             xml={SVG.size}
             text="Size"
-            title="1020 sqft"
+            title={" " + propertyDetails[0].propArea + " m²"}
           />
           <DetailItem
             xml={SVG.propertyType}
             text="Property Type"
-            title="Apartment"
+            title={" " + propertyDetails[0].propType}
           />
         </View>
       </View>
