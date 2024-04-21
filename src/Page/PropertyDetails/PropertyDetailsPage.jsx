@@ -27,14 +27,14 @@ import PropertiesService from "./../../Service/PropertyService"
 
 export default function PropertyDetails({ route }) {
 
-  // ---------------------- Redux ------------------------------------------------
-  // Ancienne version de la requête avec Redux, attention la requête est en dehors du useEffect et entraine des boucles infinies de requêtes
+  // ---------------------- Ancienne version de la requête avec Redux ------------------------------------------------
+  // Attention la requête est en dehors du useEffect et entraine des boucles infinies de requêtes
   // PropertiesService.getAllProperties();
   // console.log(useSelector((state)=>state.properties));
   // console.log("Données affichées : " + Date());
   // -----------------------------------------------------------------------------------------
 
-  // -------------- Requête pour récup toute les propriétés -------------
+  // -------------- Ancienne Requête pour récup toute les propriétés -------------
   // const [propertyDetails, setPropertyDetails] = React.useState([]);
 
   // React.useEffect(() => {
@@ -64,14 +64,16 @@ export default function PropertyDetails({ route }) {
   //   );
   // }
   // else
-  // -------------------------- Requête pour récup toute les propriétés FIN------------------------------
+  // --------------------------Ancienne requête pour récup toutes les propriétés FIN------------------------------
 
-  // -------------------------- Requête pour une seule propriété --------------------------------
-
-  // Un petit ternaire pour le flex ;) 
-  // Si on n'a pas récupérer d'Id de propriété par la route (parce qu'on a accéder directement à cette page sans cliquer sur une propriété)
+  
+  // Il y a 2 façons d'accéder à cette page : par le menu ou en cliquant sur un bien immobilier !
+  // Si on n'a pas récupérer d'Id de propriété par la route (parce qu'on a accéder directement à cette page par le header, sans cliquer sur une propriété)
   // Alors on choisi à la place une propriété aléatoire dans la base de donnée
-  const NbProperties = 99; // Max Id dans la base de données
+
+  // Max Id dans la base de données
+  const NbProperties = 99; 
+  // Un petit ternaire pour le flex ;) 
   const Id = (route.params) ? { Id } = route.params : Math.floor(Math.random() * NbProperties);
 
 
@@ -94,7 +96,6 @@ export default function PropertyDetails({ route }) {
   }
 
   console.log(JSON.stringify(propertyDetails, null, 4));
-  // console.log(propertyDetails);
   console.log(Date());
 
   if (propertyDetails.length === 0) {
@@ -116,12 +117,12 @@ export default function PropertyDetails({ route }) {
         < Breadcrumb propertyDetails={propertyDetails} />
         < PicturePropertyDetails propertyDetails={propertyDetails} />
         < PreviewPropertyDetails propertyDetails={propertyDetails} />
-        < FeaturesPropertyDetails />
-        < AddressPropertyDetails />
-        < VideoPropertyDetails />
+        < FeaturesPropertyDetails propertyDetails={propertyDetails} />
+        < AddressPropertyDetails propertyDetails={propertyDetails} />
+        < VideoPropertyDetails propertyDetails={propertyDetails} />
+        < OtherPropertiesPropertyDetails />
         < CategoryPropertyDetails />
         < RecentPostPropertyDetails />
-        < OtherPropertiesPropertyDetails />
         < SubscribeToNewsletter />
       </ScrollView>
     </>

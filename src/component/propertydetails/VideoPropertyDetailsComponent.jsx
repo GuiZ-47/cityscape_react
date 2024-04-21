@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, Linking } from 'react-native';
-// import { WebView } from 'react-native-webview';
+import GLOBALS from "./../../Component/Common/Globals";
 
-const VideoPropertyDetails = () => {
+const VideoPropertyDetails = ({propertyDetails}) => {
 
   const handlePlayVideo = () => {
     Linking.openURL('https://www.youtube.com/watch?v=pPl3ZZdTP3g');
@@ -14,7 +14,7 @@ const VideoPropertyDetails = () => {
       <View style={styles.content}>
         <View style={styles.houseContent}>
           <Image
-            source={{ uri: 'https://picsum.photos/400' }}
+            source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}${propertyDetails[0].picName}` }}
             style={styles.houseImage}
           />
           <TouchableOpacity
