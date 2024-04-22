@@ -1,7 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-const Breadcrumb = () => {
+import { useNavigation } from '@react-navigation/native';
+
+const Breadcrumb = ({ Breadcrumb, property }) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.breadcrumb}>
       <Image
@@ -21,7 +25,7 @@ const Breadcrumb = () => {
                 <Text style={styles.breadcrumbItem}>
                 <Text> > </Text></Text>
                 <Text style={styles.breadcrumbItem}>
-                  <Text style={styles.breadcrumbItemText}>Property Details</Text>
+                  <Text style={styles.breadcrumbItemText}>Property Details {property.propId}</Text>
                 </Text>
               </View>
             </View>

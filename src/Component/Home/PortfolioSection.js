@@ -1,21 +1,24 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 
 const PortfolioSection = () => {
   return (
     <View style={styles.portfolio}>
       <View style={styles.sectionHeading}>
-        <Text style={styles.sectionHeadingSubtitle}> <Text style={styles.textGradient}>Latest Portfolio</Text> </Text>
+        <Text style={styles.sectionHeadingSubtitle}><Text style={styles.textGradient}>Latest Portfolio</Text></Text>
         <Text style={styles.sectionHeadingTitle}>Optimum Homes & Properties Realty Experts</Text>
       </View>
       <View style={styles.portfolioWrapper}>
         <View style={styles.portfolioItem}>
           <View style={styles.portfolioItemThumb}>
-            <Image source={require('../../../assets/images/thumbs/portfolio1.png')} alt="" className="cover-img" />
+            <Image source={require('../../../assets/images/thumbs/portfolio1.png')} alt="" style={styles.coverImg} />
           </View>
           <View style={styles.portfolioItemContent}>
             <Text href="portfolio-details.html" style={styles.btn}> 
-              <Text style={styles.textGradient}></Text> 
+              <Text style={styles.textGradient}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text> 
             </Text>
             <View style={styles.portfolioItemInner}>
               <Text style={styles.portfolioItemTitle}>
@@ -27,11 +30,11 @@ const PortfolioSection = () => {
         </View> 
         <View style={styles.portfolioItem}>
           <View style={styles.portfolioItemThumb}>
-            <Image source={require('../../../assets/images/thumbs/portfolio2.png')} alt="" className="cover-img" />
+            <Image source={require('../../../assets/images/thumbs/portfolio2.png')} alt="" style={styles.coverImg} />
           </View>
           <View style={styles.portfolioItemContent}>
             <Text href="portfolio-details.html" style={styles.btn}> 
-              <Text style={styles.textGradient}></Text> 
+              <Text style={styles.textGradient}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text> 
             </Text>
             <View style={styles.portfolioItemInner}>
               <Text style={styles.portfolioItemTitle}>
@@ -43,11 +46,11 @@ const PortfolioSection = () => {
         </View> 
         <View style={styles.portfolioItem}>
           <View style={styles.portfolioItemThumb}>
-            <Image source={require('../../../assets/images/thumbs/portfolio3.png')} alt="" className="cover-img" />
+            <Image source={require('../../../assets/images/thumbs/portfolio3.png')} alt="" style={styles.coverImg} />
           </View>
           <View style={styles.portfolioItemContent}>
             <Text href="portfolio-details.html" style={styles.btn}> 
-              <Text style={styles.textGradient}></Text> 
+              <Text style={styles.textGradient}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text> 
             </Text>
             <View style={styles.portfolioItemInner}>
               <Text style={styles.portfolioItemTitle}>
@@ -59,11 +62,11 @@ const PortfolioSection = () => {
         </View> 
         <View style={styles.portfolioItem}>
           <View style={styles.portfolioItemThumb}>
-            <Image source={require('../../../assets/images/thumbs/portfolio4.png')} alt="" className="cover-img" />
+            <Image source={require('../../../assets/images/thumbs/portfolio4.png')} alt="" style={styles.coverImg} />
           </View>
           <View style={styles.portfolioItemContent}>
             <Text href="portfolio-details.html" style={styles.btn}> 
-              <Text style={styles.textGradient}></Text> 
+              <Text style={styles.textGradient}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text> 
             </Text>
             <View style={styles.portfolioItemInner}>
               <Text style={styles.portfolioItemTitle}>
@@ -80,15 +83,14 @@ const PortfolioSection = () => {
 
 const styles = StyleSheet.create({
   portfolio: {
-    paddingBottom: '30px',
-    paddingTop: '60px'
+    paddingTop: '60px',
+    paddingBottom: '30px'
   },
   sectionHeading: {
-    marginBottom: '30px',
-    textAlign: 'left',
-    marginLeft: 0,
-    maxWidth: '630px',
-    marginRight: 'auto'
+    //marginBottom: '30px',
+    //marginLeft: 0,
+    //maxWidth: '630px',
+    //marginRight: 'auto'
   },
   sectionHeadingSubtitle: {
     textAlign: 'center',
@@ -96,22 +98,22 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 3,
     marginBottom: 10,
-    letterSpacing: 0.11,
+    //letterSpacing: 0.11,
     fontSize: 20,
     textTransform: 'uppercase'
   },
   textGradient: {
+    textAlign: 'center',
     color: '#FD7E14',
-    backgroundClip: 'text',
-    transition: 'background 0.3s ease-in-out',
     fontWeight: '600'
   },
   sectionHeadingTitle: {
+    textAlign: 'center',
     position: 'relative',
     marginBottom: 0
   },
   portfolioWrapper: {
-    
+    alignItems: 'center'
   },
   portfolioItem: {
     width: '100%',
@@ -120,31 +122,38 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   portfolioItemThumb: {
+    width: 400,
+    height: 250,
     borderRadius: 'inherit'
   },
+  coverImg: {
+    width: '100%',
+    height: '100%',
+    //resizeMode: 'contain'
+  }, 
   portfolioItemContent: {
     width: '100%',
     backgroundColor: '#181616',
     position: 'absolute',
     left: 0,
-    bottom: '-22px',
-    transition: '0.2s linear'
+    bottom: '-22px'
   },
   btn: {
     position: 'relative',
     borderRadius: 5,
-    border: '1px solid transparent',
     fontWeight: '500',
     color: 'white',
     zIndex: 1,
     fontSize: 20,
-    lineHeight: 1,
+    //lineHeight: 1,
     textTransform: 'uppercase',
-    backgroundColor: 'transparent',
-    borderColor: 'orange',
+    //backgroundColor: 'transparent',
+    //borderColor: 'orange',
     padding: '14px 20px'
   },
   portfolioItemInner: {
+    alignItems: 'center',
+    transition: '0.2s linear',
     padding: 'clamp(1rem, -0.217rem + 2.536vw, 2rem)',
     paddingTop: '32px'
   },
@@ -154,8 +163,7 @@ const styles = StyleSheet.create({
     fontWeight: '600'
   },
   link: {
-    overflow: 'hidden',
-    transition: '0.2s linear'
+    overflow: 'hidden'
   },  
   portfolioItemDesc: {
     color: 'white',

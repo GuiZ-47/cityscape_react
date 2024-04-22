@@ -1,5 +1,8 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 
 const TestimonialsSection = () => {
   return (
@@ -7,7 +10,7 @@ const TestimonialsSection = () => {
       <View style={styles.container}>
         <View style={styles.sectionHeading}>
           <View style={styles.sectionHeadingInner}>
-            <Text style={styles.sectionHeadingSubtitle}> <Text style={styles.textGradient}>Client Testimonial</Text> </Text>
+            <Text style={styles.sectionHeadingSubtitle}><Text style={styles.textGradient}>Client Testimonial</Text></Text>
             <Text style={styles.sectionHeadingTitle}>Optimum Homes & Properties property for you</Text>
           </View>
           <Text style={styles.sectionHeadingDesc}>Use receiving accounts a number a currencies and get paid like a local Use receivin accounts a number paid the most beautiful think</Text>
@@ -26,11 +29,11 @@ const TestimonialsSection = () => {
                   </View>
                   <Text style={styles.testimonialItemDesc}>Their product exceeded his my routi  expectations. The the quality and attention to detail a the a moutstanding and it has become an essential most a education the a man who can do tant clearly</Text>
                   <View style={styles.starRating}>
-                    <Text style={styles.starRatingItem}><Text className="fas fa-star"></Text></Text>
-                    <Text style={styles.starRatingItem}><Text className="fas fa-star"></Text></Text>
-                    <Text style={styles.starRatingItem}><Text className="fas fa-star"></Text></Text>
-                    <Text style={styles.starRatingItem}><Text className="fas fa-star"></Text></Text>
-                    <Text style={styles.starRatingItemUnabled}><Text className="fas fa-star"></Text></Text>
+                    <Text style={styles.starRatingItem}><FontAwesomeIcon icon={faStar} /></Text>
+                    <Text style={styles.starRatingItem}><FontAwesomeIcon icon={faStar} /></Text>
+                    <Text style={styles.starRatingItem}><FontAwesomeIcon icon={faStar} /></Text>
+                    <Text style={styles.starRatingItem}><FontAwesomeIcon icon={faStar} /></Text>
+                    <Text style={styles.starRatingItemUnabled}><FontAwesomeIcon icon={faStar} /></Text>
                   </View>
                 </View>
                 <View style={styles.testimonialItem}>
@@ -43,18 +46,18 @@ const TestimonialsSection = () => {
                   </View>
                   <Text style={styles.testimonialItemDesc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, autem! Consectetur illo tempora sed repudiandae eaque velit expedita, ipsa earum explicabo libero, voluptatibus aliquid odio</Text>
                   <View style={styles.starRating}>
-                    <Text style={styles.starRatingItem}><Text className="fas fa-star"></Text></Text>
-                    <Text style={styles.starRatingItem}><Text className="fas fa-star"></Text></Text>
-                    <Text style={styles.starRatingItem}><Text className="fas fa-star"></Text></Text>
-                    <Text style={styles.starRatingItem}><Text className="fas fa-star"></Text></Text>
-                    <Text style={styles.starRatingItemUnabled}><Text className="fas fa-star"></Text></Text>
+                    <Text style={styles.starRatingItem}><FontAwesomeIcon icon={faStar} /></Text>
+                    <Text style={styles.starRatingItem}><FontAwesomeIcon icon={faStar} /></Text>
+                    <Text style={styles.starRatingItem}><FontAwesomeIcon icon={faStar} /></Text>
+                    <Text style={styles.starRatingItem}><FontAwesomeIcon icon={faStar} /></Text>
+                    <Text style={styles.starRatingItemUnabled}><FontAwesomeIcon icon={faStar} /></Text>
                   </View>
                 </View>
               </View>
             </View>
             <View style={styles.col}>
               <View style={styles.testimonialThumb}>
-                <Image source={require('../../../assets/images/thumbs/testimonial-img.png')} alt="" className="cover-img" />
+                <Image source={require('../../../assets/images/thumbs/testimonial-img.png')} alt="" style={styles.coverImg} />
               </View>
             </View>
           </View>
@@ -82,7 +85,7 @@ const styles = StyleSheet.create({
     marginRight: 'auto'
   },
   sectionHeadingInner: {
-    maxWidth: '630px',
+    maxWidth: '630px'
   },
   sectionHeadingSubtitle: {
     textAlign: 'center',
@@ -96,8 +99,6 @@ const styles = StyleSheet.create({
   },
   textGradient: {
     color: '#FD7E14',
-    backgroundClip: 'text',
-    transition: 'background 0.3s ease-in-out',
     fontWeight: '600'
   },
   sectionHeadingTitle: {
@@ -155,7 +156,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: '5px',
     color: 'black',
-    lineHeight: 1.2
+    //lineHeight: 1.2
   },
   testimonialItemDesignation: {
     
@@ -163,23 +164,21 @@ const styles = StyleSheet.create({
   testimonialItemDesc: {
     marginTop: '20px',
     marginBottom: '24px',
-    fontSize: 1.2
+    //fontSize: 1.2
   },
   starRating: {
     gap: 5,
     flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'flex-end'
+    flexDiraction: 'row',
+    //alignItems: 'center',
+    //justifyContent: 'flex-end',
+    transition: 'background 0.3s ease-in-out'
   },
   starRatingItem: {
-    fontSize: 1.25,
-    backgroundClip: 'text',
-    transition: 'background 0.3s ease-in-out'
+    //fontSize: 1.25
   },
   starRatingItemUnabled: {
-    background: 'transparent',
-    fontSize: 1.25,
-    transition: 'background 0.3s ease-in-out'
+    //fontSize: 1.25
   },
   testimonialThumb: {
     borderRadius: 5,
@@ -188,11 +187,16 @@ const styles = StyleSheet.create({
     textAlign: 'end',
     width: 'auto',
     overflow: 'hidden',
-    position: 'absolute',
+    //position: 'absolute',
     top: 0,
     zIndex: -1,
-    height: '100%'
-  }
-})
+    //height: '100%'
+  },
+  coverImg: {
+    width: 400,
+    height: 250,
+    //resizeMode: 'contain'
+  } 
+});
 
 export default TestimonialsSection;

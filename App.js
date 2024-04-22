@@ -1,17 +1,17 @@
 import React from 'react';
-
-import Home from './src/Page/Home/Home.jsx';
-import Property from './src/Page/Property/Property.jsx';
-import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage.jsx';
-
 import { StatusBar } from 'expo-status-bar';
 
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
+import Home from './src/Page/Home/Home';
+import Property from './src/Page/Property/Property';
+import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage';
+
+//Pour une utilisation de Redux, voir le projet « cityscape-react-native-redux »
 const Stack = createNativeStackNavigator();
 
-export default function App() {
+export default function App() {  
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">

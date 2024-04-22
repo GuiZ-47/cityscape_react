@@ -1,7 +1,11 @@
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
-const PicturePropertyDetails = () => {
+import { useNavigation } from '@react-navigation/native';
+
+const PicturePropertyDetails = ({ property }) => {
+  const navigation = useNavigation();
+  
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -47,24 +51,24 @@ const PicturePropertyDetails = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap'
   },
   row: {
     flexDirection: 'row',
-    width: '100%',
+    width: '100%'
   },
   col: {
-    flex: 1,
+    flex: 1
   },
   propertyDetailsThumb: {
     margin: 2,
-    aspectRatio: 1, // Maintain aspect ratio
+    aspectRatio: 1 // Maintain aspect ratio
   },
   image: {
     width: '100%',
     height: '100%',
-    resizeMode: 'cover',
-  },
+    resizeMode: 'cover'
+  }
 });
 
 export default PicturePropertyDetails;
