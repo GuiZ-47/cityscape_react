@@ -3,8 +3,6 @@ import { View, Image, Text, ScrollView, StyleSheet, } from 'react-native';
 import axios from "axios";
 import GLOBALS from "./../../Component/Common/Globals";
 
-
-import PropertiesService from '../../Service/PropertyService';
 import PicturePropertyDetails from "./../../Component/PropertyDetails/PicturePropertyDetailsComponent"
 import Breadcrumb from "./../../Component/PropertyDetails/BreadcrumbComponent"
 import PreviewPropertyDetails from "./../../Component/PropertyDetails/PreviewPropertyDetails"
@@ -16,8 +14,6 @@ import RecentPostPropertyDetails from "./../../Component/PropertyDetails/RecentP
 import OtherPropertiesPropertyDetails from "./../../Component/PropertyDetails/OtherPropertiesPropertyDetailsComponent"
 import SubscribeToNewsletter from "./../../Component/Newsletter/SubscribeToNewsletterComponent"
 import MobileMenu from "./../../Component/Header/HeaderComponent"
-
-import PropertiesService from "./../../Service/PropertyService"
 
 // Composant utilisé uniquement pour des test
 // import PropertyView from "./../../Component/PropertyDetails/PropertyView"
@@ -31,7 +27,7 @@ export default function PropertyDetails({ route }) {
   // Max Id dans la base de données
   const NbProperties = 99; 
   // Un petit ternaire pour le flex ;) 
-  const Id = (route.params) ? { Id } = route.params : Math.floor(Math.random() * NbProperties);
+  const Id = (route.params) ? route.params.propertyId : Math.floor(Math.random() * NbProperties);
 
 
   const [propertyDetails, setPropertyDetails] = useState([]);
