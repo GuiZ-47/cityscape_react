@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
+//import { useNavigation } from '@react-navigation/native';
 
 import { SvgXml } from 'react-native-svg';
-import SVG from "./../SVG/SvgComponent"
+import SVG from "./../SVG/SvgComponent";
 
 const PreviewPropertyDetails = ({propertyDetails}) => {
+
   return (
     <View style={styles.propertyDetailsItem}>
       <Text style={styles.title}>Preview of the "{propertyDetails[0].propTitle}" property : </Text>
@@ -15,6 +17,7 @@ const PreviewPropertyDetails = ({propertyDetails}) => {
             xml={SVG.room}
             text="Room"
             title={" " + propertyDetails[0].propRooms + " Rooms"}
+
           />
           <DetailItem
             xml={SVG.bed}

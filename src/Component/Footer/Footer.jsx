@@ -1,6 +1,6 @@
 import React from 'react';
-import TopFooter from '../../Component/Footer/TopFooter.js';
-import BottomFooter from '../../Component/Footer/BottomFooter.js';
+import TopFooter from './TopFooter';
+import BottomFooter from './BottomFooter';
 //import { StyleSheet, Text, View } from 'react-native';
 
 const Footer = () => {

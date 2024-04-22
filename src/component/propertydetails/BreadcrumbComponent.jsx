@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
 const Breadcrumb = ({ propertyDetails }) => {
-
   return (
     <View style={styles.breadcrumb}>
       <Image

@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 
-const Property = () => {
-    return (
+const Property = () => {  
+  return (
         <View style={{ backgroundColor: '#F0F0F0', paddingVertical: 120 }}>
             <View style={{ paddingHorizontal: 20 }}>
                 <View>

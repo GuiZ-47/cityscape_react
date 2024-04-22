@@ -22,7 +22,7 @@ const PicturePropertyDetails = ({ propertyDetails }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap'
   },
   imageContainer: {
     flexDirection: 'row',

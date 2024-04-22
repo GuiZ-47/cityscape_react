@@ -1,9 +1,10 @@
-import React from 'react';
-import { View,Image, Text, ScrollView, StyleSheet, } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Image, Text, ScrollView, StyleSheet, } from 'react-native';
 import axios from "axios";
 import GLOBALS from "./../../Component/Common/Globals";
 
 
+import PropertiesService from '../../Service/PropertyService';
 import PicturePropertyDetails from "./../../Component/PropertyDetails/PicturePropertyDetailsComponent"
 import Breadcrumb from "./../../Component/PropertyDetails/BreadcrumbComponent"
 import PreviewPropertyDetails from "./../../Component/PropertyDetails/PreviewPropertyDetails"
@@ -21,52 +22,8 @@ import PropertiesService from "./../../Service/PropertyService"
 // Composant utilisé uniquement pour des test
 // import PropertyView from "./../../Component/PropertyDetails/PropertyView"
 
-// Pour utiliser redux
-// import { useSelector } from 'react-redux'
-
-
 export default function PropertyDetails({ route }) {
 
-  // ---------------------- Ancienne version de la requête avec Redux ------------------------------------------------
-  // Attention la requête est en dehors du useEffect et entraine des boucles infinies de requêtes
-  // PropertiesService.getAllProperties();
-  // console.log(useSelector((state)=>state.properties));
-  // console.log("Données affichées : " + Date());
-  // -----------------------------------------------------------------------------------------
-
-  // -------------- Ancienne Requête pour récup toute les propriétés -------------
-  // const [propertyDetails, setPropertyDetails] = React.useState([]);
-
-  // React.useEffect(() => {
-  //   fetchPropertyDetails();
-
-  // }, []);
-
-  // function fetchPropertyDetails() {
-  //   axios.get(`${GLOBALS.BASE_URL}/api/react/properties`)
-  //     .then(function (response) {
-  //       setPropertyDetails(response.data);
-
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-  // }
-
-  // console.log(JSON.stringify(propertyDetails, null, 4));
-  // console.log(Date());
-
-
-
-  // if (propertyDetails.length === 0) {
-  //   return (
-  //     <Text style={styles.breadcrumbTitle}>Chargement ...</Text>
-  //   );
-  // }
-  // else
-  // --------------------------Ancienne requête pour récup toutes les propriétés FIN------------------------------
-
-  
   // Il y a 2 façons d'accéder à cette page : par le menu ou en cliquant sur un bien immobilier !
   // Si on n'a pas récupérer d'Id de propriété par la route (parce qu'on a accéder directement à cette page par le header, sans cliquer sur une propriété)
   // Alors on choisi à la place une propriété aléatoire dans la base de donnée
@@ -77,12 +34,11 @@ export default function PropertyDetails({ route }) {
   const Id = (route.params) ? { Id } = route.params : Math.floor(Math.random() * NbProperties);
 
 
-  const [propertyDetails, setPropertyDetails] = React.useState([]);
+  const [propertyDetails, setPropertyDetails] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log(`Cette page affiche la propriété d'ID : ${Id}`);
     fetchPropertyDetails();
-
   }, []);
 
   function fetchPropertyDetails() {
@@ -126,7 +82,6 @@ export default function PropertyDetails({ route }) {
         < SubscribeToNewsletter />
       </ScrollView>
     </>
-
   );
 };
 
