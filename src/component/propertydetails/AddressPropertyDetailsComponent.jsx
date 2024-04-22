@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet} from 'react-native';
 import { WebView } from 'react-native-webview';
 
-const AddressPropertyDetails = () => {
+const AddressPropertyDetails = ({propertyDetails}) => {
   return (
     <View style={styles.propertyDetailsItem}>
       <Text style={styles.title}>Address</Text>
@@ -26,8 +26,8 @@ const AddressPropertyDetails = () => {
           originWhitelist={['*']}
                     source={{ html: `<html>
                     <body>
-                      <iframe width="600" height="450" frameborder="0" style="border:0"
-                src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1150112.1628856962!2d44.64619029447154!3d23.086651461779507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sBurj%20Khalifa!5e0!3m2!1sen!2sbd!4v1707037970965!5m2!1sen!2sbd' allowfullscreen></iframe>
+                      <iframe width="100%" height="100%" frameborder="0" style="border:0"
+                src='https://maps.google.com/maps?q=${propertyDetails[0].propLatitude},${propertyDetails[0].propLongitude}&output=embed' allowfullscreen></iframe>
                     </body>
                 </html>` }}
           />
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
   addressMap: {
     marginTop: 10,
     height: 200, // You may adjust the height as needed
+    // width: '100%',
   },
 });
 

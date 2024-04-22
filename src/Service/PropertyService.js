@@ -1,6 +1,5 @@
-import axios from 'axios';
-
-import GLOBALS from '../Component/Common/Globals';
+import axios from "axios";
+import GLOBALS from "./../Component/Common/Globals";
 
 // Pour une utilisation de Redux, voir le projet « cityscape-react-native-redux »
 // Appel vers l'API pour récupérer toutes les propriétés listées, sans exception
