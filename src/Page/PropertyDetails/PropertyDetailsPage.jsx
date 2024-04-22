@@ -4,7 +4,7 @@ import axios from "axios";
 import GLOBALS from "./../../Component/Common/Globals";
 
 
-import PropertiesService from '../../Service/PropertyService';
+
 import PicturePropertyDetails from "./../../Component/PropertyDetails/PicturePropertyDetailsComponent"
 import Breadcrumb from "./../../Component/PropertyDetails/BreadcrumbComponent"
 import PreviewPropertyDetails from "./../../Component/PropertyDetails/PreviewPropertyDetails"
