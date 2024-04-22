@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-const Breadcrumb = () => {
+const Breadcrumb = ({ propertyDetails }) => {
   return (
     <View style={styles.breadcrumb}>
       <Image
@@ -15,13 +15,13 @@ const Breadcrumb = () => {
               <Text style={styles.breadcrumbTitle}>Property Details</Text>
               <View style={styles.breadcrumbList}>
                 <Text style={styles.breadcrumbItem}>
-                    {/* Mettre ici un lien vers la page d'accueil */}
-                    <Text>Home</Text>
+                  <Text>ID {propertyDetails[0].propId}</Text>
                 </Text>
                 <Text style={styles.breadcrumbItem}>
-                <Text> </Text>  </Text>
+                  <Text> : </Text>
+                </Text>
                 <Text style={styles.breadcrumbItem}>
-                  <Text style={styles.breadcrumbItemText}>Property Details</Text>
+                  <Text style={styles.breadcrumbItemText}>"{propertyDetails[0].propTitle}"</Text>
                 </Text>
               </View>
             </View>
@@ -35,20 +35,18 @@ const Breadcrumb = () => {
 const styles = StyleSheet.create({
   breadcrumb: {
     paddingVertical: 5,
-    backgroundColor : 'black',
-     height : 200 ,
+    backgroundColor: 'black',
+    height: 200,
   },
   breadcrumbImg: {
-     position: 'absolute',
-       bottom: 0,
-
-
+    position: 'absolute',
+    bottom: 0,
 
   },
   container: {
-    flex :1,
-    justifyContent : 'center',
-    alignItems : 'center',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
 
 
   },
@@ -62,8 +60,8 @@ const styles = StyleSheet.create({
     // Define your styles for the breadcrumb wrapper
   },
   breadcrumbTitle: {
-    color : 'white',
-     fontSize: 20,
+    color: 'white',
+    fontSize: 20,
 
   },
   breadcrumbList: {
@@ -71,14 +69,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   breadcrumbItem: {
-    color : 'white',
+    color: 'white',
     fontSize: 20,
   },
   breadcrumbLink: {
     // Define your styles for the breadcrumb link
   },
   breadcrumbItemText: {
-    color : 'white',
+    color: 'white',
   },
 });
 

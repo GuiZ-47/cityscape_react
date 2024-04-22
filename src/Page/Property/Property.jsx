@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {Text,ScrollView,StyleSheet, View,} from 'react-native';
+import {Text,ScrollView,StyleSheet, View, Image,} from 'react-native';
 import  GLOBALS from "../../Component/Common/Globals.js";
 
 
@@ -13,25 +13,10 @@ import axios from 'axios';
 
 
 export default function Property({ route, navigation })  {
-  // const [products, setProducts] = useState([]);
-  // useEffect(() => {
-  //   fetchProducts();
-  // }, []);
-  // const fetchProducts = () => {
-  //   axios
-  //     .get('http://192.168.1.60:8741/api/react')
-  //     .then((res) => {
-  //       console.log(res);
-  //       setProducts(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   }
-
-  // Utilisation des hooks et des props de useState
   
+  // Utilisation des hooks et des props de useState
   const [properties, setProperties] = useState([]);
+  
   useEffect(() => {
     axios.get(`${GLOBALS.BASE_URL}/api/react/`)
     .then(function (response) {
@@ -45,12 +30,17 @@ export default function Property({ route, navigation })  {
     });
   }, []);
   
-  if (properties.length === 0) {
+if (properties.length === 0) {
     return (
-      <Text style={styles.breadcrumbTitle}>Chargement ...</Text>
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingTitle}>Loading ...</Text>
+        <Image
+          source={require("./../../../assets/loading.webp")}
+          style={styles.image}
+        />
+      </View>
     );
   }
-  else
 
   return (
 
@@ -64,13 +54,28 @@ export default function Property({ route, navigation })  {
   </ScrollView>
   </>
 
-);
+  );
 };
 
 const styles = StyleSheet.create({
   contentContainer: {
-    
     paddingTop: 40,
-  }
+  },
+  loadingContainer: {
+    flexDirection: 'column',
+    height : '100%',
+  },
+  image: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  loadingTitle: {
+    color : 'red',
+     fontSize: 40,
+     zIndex: 10,
+  },
 });
 

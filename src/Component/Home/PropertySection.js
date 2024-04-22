@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableHighlight, Text, Image, FlatList, Button, StyleSheet } from 'react-native';
+
 import { useNavigation } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons/faMapMarkerAlt';
 import { faBed } from '@fortawesome/free-solid-svg-icons/faBed';
 import { faBath } from '@fortawesome/free-solid-svg-icons/faBath';
-import  GLOBALS from "../../Component/Common/Globals.js";
 
+import GLOBALS from '../Common/Globals';
 
-
-const PropertySection = ({ PropertySection, properties, setProperties }) => {
+const PropertySection = ({ PropertySection, properties }) => {
   const navigation = useNavigation();
+
+  if (properties.length === 0) {
+    return <Text>Chargement des propriétés en cours…</Text>;
+  }
   
   return (
     <View style={styles.property}>
@@ -23,28 +25,39 @@ const PropertySection = ({ PropertySection, properties, setProperties }) => {
             <Text style={styles.sectionHeadingSubtitle}><Text style={styles.textGradient}>Latest property</Text></Text>
             <Text style={styles.sectionHeadingTitle}>Prestige Property Management property for you</Text>
           </View>
-          <Text href="#" style={styles.btn}>View More <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
+          <TouchableHighlight
+            style={styles.link}
+            activeOpacity={0.6}
+            underlayColor="#DDDDDD"
+            onPress={() => navigation.navigate('Property')}>
+              <Text href="#" style={styles.btn}>View More <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
+          </TouchableHighlight>
         </View>
         <View style={styles.row}>
           {properties.map((property) => (
-          <View style={styles.col} key={property.id}>
+          <View style={styles.col} key={property.propId}>
             <View style={styles.propertyItem}>
               <View style={styles.propertyItemThumb}>
                 <TouchableHighlight
                   style={styles.link}
                   activeOpacity={0.6}
                   underlayColor="#DDDDDD"
-                  onPress={() => navigation.navigate('PropertyDetails', {propertyId: property.id})}>
-                    <Image 
-                    source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}property${property.id}.jpg` }} width={200} height={200} alt="" className="cover-img"
-                    style={styles.image} 
-                    />
+                  onPress={() => navigation.navigate('PropertyDetails', {propertyId: property.propId})}>
+                    <Image source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}${property.picName}` }} alt="" style={styles.coverImg} />
                 </TouchableHighlight>
-                <Text style={styles.propertyItemBadge}>Sale</Text>
+                <Text style={styles.propertyItemBadge}>Sale {property.propId}</Text>
               </View>
               <View style={styles.propertyItemContent}>
-                <Text style={styles.propertyItemPrice}>${property.price} <Text style={styles.day}>/per day</Text></Text>
-                <Text style={styles.propertyItemTitle}><Text href="property-details.html" style={styles.link}>{property.propertyTitle}</Text></Text>
+                <Text style={styles.propertyItemPrice}>${property.propPrice} <Text style={styles.day}>/per day</Text></Text>
+                <Text style={styles.propertyItemTitle}>
+                  <TouchableHighlight
+                    style={styles.link}
+                    activeOpacity={0.6}
+                    underlayColor="#DDDDDD"
+                    onPress={() => navigation.navigate('PropertyDetails', {propertyId: property.propId})}>
+                      <Text style={styles.link}>{property.propTitle}</Text>
+                  </TouchableHighlight>
+                </Text>
                 <Text style={styles.propertyItemLocation}><Text className="icon"><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>66 Broklyant, New York America</Text>
                 <View style={styles.propertyItemBottom}>
                   <View style={styles.amenitiesList}>
@@ -52,11 +65,11 @@ const PropertySection = ({ PropertySection, properties, setProperties }) => {
                       <Text style={styles.icon}>
                         <FontAwesomeIcon icon={faBed} color={'white'} />
                       </Text>
-                      <Text style={styles.bedsAndBaths}>{property.room} Beds</Text>
+                      <Text style={styles.bedsAndBaths}>{property.propBeds} Beds</Text>
                       <Text style={styles.icon}>
                         <FontAwesomeIcon icon={faBath} color={'white'} />
                       </Text>
-                      {/* <Text style={styles.bedsAndBaths}>{property.propNbBaths} Baths</Text> */}
+                      <Text style={styles.bedsAndBaths}>{property.propBaths} Baths</Text>
                     </View>
                   </View>
                   <Text href="#" style={styles.simpleBtn}>Book Now<Text className="icon-right"><Text className="fas fa-arrow-right"></Text></Text></Text>
@@ -155,7 +168,16 @@ const styles = StyleSheet.create({
     position: 'relative',
     overflow: 'hidden',
     transition: '0.2s linear',
-    maxHeight: '252px'
+    width: '100%'
+  },
+  link: {
+    overflow: 'hidden',
+    color: 'white'
+  },
+  coverImg: {
+    width: 400,
+    height: 250,
+    //resizeMode: 'contain'
   },
   propertyItemBadge: {
     textAlign: 'center',
@@ -237,9 +259,6 @@ const styles = StyleSheet.create({
     color: 'white',
     textTransform: 'uppercase',
     opacity: 0.9
-  },
-  link: {
-    overflow: 'hidden'
   }
 });
 
