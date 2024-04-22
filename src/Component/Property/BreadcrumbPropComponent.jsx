@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-const Breadcrumb = () => {
+const BreadcrumbProp = () => {
   return (
     <View style={styles.breadcrumb}>
       <Image
@@ -12,16 +12,16 @@ const Breadcrumb = () => {
         <View style={styles.row}>
           <View style={styles.col}>
             <View style={styles.breadcrumbWrapper}>
-              <Text style={styles.breadcrumbTitle}>Property Details</Text>
+              <Text style={styles.breadcrumbTitle}>Property</Text>
               <View style={styles.breadcrumbList}>
                 <Text style={styles.breadcrumbItem}>
                     {/* Mettre ici un lien vers la page d'accueil */}
-                    <Text>Home</Text>
+                    <Text>Home {"\n"}</Text>
                 </Text>
                 <Text style={styles.breadcrumbItem}>
                 <Text> </Text>  </Text>
                 <Text style={styles.breadcrumbItem}>
-                  <Text style={styles.breadcrumbItemText}>Property Details</Text>
+                  <Text style={styles.breadcrumbItemText}>Property</Text>
                 </Text>
               </View>
             </View>
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Breadcrumb;
+export default BreadcrumbProp;
