@@ -6,19 +6,12 @@ import { useNavigation } from '@react-navigation/native';
 export default function MobileMenu () {
 
 // https://reactnavigation.org/docs/use-navigation
-  //const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-// Restes du bouton de type burger, au cas où
-/*        {/* Bouton de menu mobile }
-        <TouchableOpacity style={styles.menuButton} onPress={toggleMenu}>
-          <Ionicons name="menu" size={30} color="black" />
-        </TouchableOpacity>
-*/
 
   return (
     <View style={styles.container}>
@@ -34,6 +27,10 @@ export default function MobileMenu () {
             />
           </TouchableOpacity>
         </View>
+        {/* Bouton de menu mobile */}
+        <TouchableOpacity style={styles.menuButton} onPress={toggleMenu}>
+          <Ionicons name="menu" size={30} color="black" />
+        </TouchableOpacity>
       </View>
       {/* Menu latéral */}
       {isMenuOpen && (
@@ -48,6 +45,7 @@ export default function MobileMenu () {
               <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                 <Text style={styles.textLien}> Home </Text>
               </TouchableOpacity>
+
               <TouchableOpacity onPress={() => navigation.navigate('Properties')}>
                 <Text style={styles.textLien}> Properties </Text>
               </TouchableOpacity>

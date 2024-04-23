@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, TouchableHighlight, Text, Image, FlatList, Button, StyleSheet } from 'react-native';
+import { View, TouchableHighlight, Text, Image, FlatList, Button, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -10,13 +10,116 @@ import { faBath } from '@fortawesome/free-solid-svg-icons/faBath';
 
 import GLOBALS from '../Common/Globals';
 
-const PropertySection = ({ PropertySection, properties }) => {
+const PropertySection = ({ properties }) => {
   const navigation = useNavigation();
 
-  if (properties.length === 0) {
-    return <Text>Chargement des propriétés en cours…</Text>;
+  // Pour la pagination
+  const itemsPerPage = 10;
+  const [totalPages, setTotalpages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [items, setItems] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+
+  // s'active à chaque changement de currentPage
+  useEffect(() => {
+    sliceProperties();
+  }, [currentPage,]);
+
+  // Sélectionne dans le state 'properties' les propriétés à afficher (en fonction de la page active)
+  // Et insère la sélection dans le state 'items'
+  function sliceProperties() {
+    let data = properties.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    // console.log(JSON.stringify(data, null, 4));
+    console.log(`Page affichée : ${currentPage}`);
+    console.log(Date());
+    setItems(data);
+    setTotalpages(Math.floor(properties.length / itemsPerPage));
   }
-  
+
+  // change la page active
+  const handlePageClick = (p) => setCurrentPage(p);
+
+  // Si la Flatlist n'a pas de données à afficher
+  const handleEmpty = () => {
+    return <Text> No Property ! </Text>;
+  };
+
+  // Boutons de la pagination
+  const renderPaginationButtons = () => {
+    const maxButtonsToShow = 5;
+    let startPage = Math.max(0, currentPage - Math.floor(maxButtonsToShow / 2));
+    let endPage = Math.min(totalPages, startPage + maxButtonsToShow - 1);
+
+    if (endPage - startPage + 1 < maxButtonsToShow) {
+      startPage = Math.max(0, endPage - maxButtonsToShow + 1);
+    }
+
+    const buttons = [];
+
+    for (let i = startPage; i <= endPage; i++) {
+      buttons.push(
+        <TouchableOpacity
+          key={i}
+          onPress={() => handlePageClick(i)}
+          style={[
+            styles.paginationButton,
+            i === currentPage ? styles.activeButton : null,
+          ]}>
+          <Text style={{ color: 'white' }}>{i}</Text>
+        </TouchableOpacity>,
+      );
+    }
+
+    return buttons;
+  };
+
+  const renderItem = ({ item }) => (
+    <View style={styles.row}>
+      <View style={styles.col}>
+        <View style={styles.propertyItem} key={item.propId}>
+          <View style={styles.propertyItemThumb}>
+            <TouchableHighlight
+              style={styles.link}
+              activeOpacity={0.6}
+              underlayColor="#DDDDDD"
+              onPress={() => navigation.navigate('PropertyDetails', { propertyId: item.propId })}>
+              <Image source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}${item.picName}` }} alt="" style={styles.coverImg} />
+            </TouchableHighlight>
+            <Text style={styles.propertyItemBadge}>Sale {item.propId}</Text>
+          </View>
+          <View style={styles.propertyItemContent}>
+            <Text style={styles.propertyItemPrice}>${item.propPrice} <Text style={styles.day}>/per day</Text></Text>
+            <Text style={styles.propertyItemTitle}>
+              <TouchableHighlight
+                style={styles.link}
+                activeOpacity={0.6}
+                underlayColor="#DDDDDD"
+                onPress={() => navigation.navigate('PropertyDetails', { propertyId: item.propId })}>
+                <Text style={styles.link}>{item.propTitle}</Text>
+              </TouchableHighlight>
+            </Text>
+            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>66 Broklyant, New York America</Text>
+            <View style={styles.propertyItemBottom}>
+              <View style={styles.amenitiesList}>
+                <View style={styles.amenitiesListItem}>
+                  <Text style={styles.icon}>
+                    <FontAwesomeIcon icon={faBed} color={'white'} />
+                  </Text>
+                  <Text style={styles.bedsAndBaths}>{item.propBeds} Beds</Text>
+                  <Text style={styles.icon}>
+                    <FontAwesomeIcon icon={faBath} color={'white'} />
+                  </Text>
+                  <Text style={styles.bedsAndBaths}>{item.propBaths} Baths</Text>
+                </View>
+              </View>
+              <Text href="#" style={styles.simpleBtn}>Book Now<Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  );
+
   return (
     <View style={styles.property}>
       <View style={styles.container}>
@@ -29,59 +132,25 @@ const PropertySection = ({ PropertySection, properties }) => {
             style={styles.link}
             activeOpacity={0.6}
             underlayColor="#DDDDDD"
-            onPress={() => navigation.navigate('Property')}>
+            onPress={() => navigation.navigate('Properties')}>
               <Text href="#" style={styles.btn}>View More <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
           </TouchableHighlight>
         </View>
-        <View style={styles.row}>
-          {properties.map((property) => (
-          <View style={styles.col} key={property.propId}>
-            <View style={styles.propertyItem}>
-              <View style={styles.propertyItemThumb}>
-                <TouchableHighlight
-                  style={styles.link}
-                  activeOpacity={0.6}
-                  underlayColor="#DDDDDD"
-                  onPress={() => navigation.navigate('Property', {propertyId: property.propId})}>
-                    <Image source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}${property.picName}` }} alt="" style={styles.coverImg} />
-                </TouchableHighlight>
-                <Text style={styles.propertyItemBadge}>Sale {property.propId}</Text>
-              </View>
-              <View style={styles.propertyItemContent}>
-                <Text style={styles.propertyItemPrice}>${property.propPrice} <Text style={styles.day}>/per day</Text></Text>
-                <Text style={styles.propertyItemTitle}>
-                  <TouchableHighlight
-                    style={styles.link}
-                    activeOpacity={0.6}
-                    underlayColor="#DDDDDD"
-                    onPress={() => navigation.navigate('Property', {propertyId: property.propId})}>
-                      <Text style={styles.link}>{property.propTitle}</Text>
-                  </TouchableHighlight>
-                </Text>
-                <Text style={styles.propertyItemLocation}><Text className="icon"><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>66 Broklyant, New York America</Text>
-                <View style={styles.propertyItemBottom}>
-                  <View style={styles.amenitiesList}>
-                    <View style={styles.amenitiesListItem}>
-                      <Text style={styles.icon}>
-                        <FontAwesomeIcon icon={faBed} color={'white'} />
-                      </Text>
-                      <Text style={styles.bedsAndBaths}>{property.propBeds} Beds</Text>
-                      <Text style={styles.icon}>
-                        <FontAwesomeIcon icon={faBath} color={'white'} />
-                      </Text>
-                      <Text style={styles.bedsAndBaths}>{property.propBaths} Baths</Text>
-                    </View>
-                  </View>
-                  <Text href="#" style={styles.simpleBtn}>Book Now<Text className="icon-right"><Text className="fas fa-arrow-right"></Text></Text></Text>
-                </View>
-              </View>
-            </View>
-          </View>
-          ))}
+        
+        {/* Affichage des bien immobiliers */}
+        <FlatList
+          data={items}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+          ListEmptyComponent={handleEmpty}
+          scrollEnabled={false}
+        />
+
+        {/* Affichage des boutons de pagination */}
+        <View style={styles.paginationContainer}>
+          {renderPaginationButtons()}
         </View>
-        <View style={styles.propertyBtn}>
-          <Button title="Sell All Listing" color='#FD7E14' href="#" style={styles.btn}><Text className="icon-right"><Text className="fas fa-arrow-right"></Text></Text></Button>
-        </View>
+
       </View>
     </View>
   );
@@ -259,7 +328,32 @@ const styles = StyleSheet.create({
     color: 'white',
     textTransform: 'uppercase',
     opacity: 0.9
-  }
+  },
+  paginationContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 8,
+    backgroundColor: 'transparent',
+  },
+  paginationButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    marginHorizontal: 4,
+    backgroundColor: 'gray',
+  },
+  activeButton: {
+    backgroundColor: '#22c55d',
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+  },
+  buttonText: {
+    color: 'white',
+  },
 });
 
 export default PropertySection;
