@@ -12,10 +12,6 @@ import GLOBALS from '../Common/Globals';
 
 const PropertySection = ({ PropertySection, properties }) => {
   const navigation = useNavigation();
-
-  if (properties.length === 0) {
-    return <Text>Chargement des propriétés en cours…</Text>;
-  }
   
   return (
     <View style={styles.property}>
@@ -29,7 +25,7 @@ const PropertySection = ({ PropertySection, properties }) => {
             style={styles.link}
             activeOpacity={0.6}
             underlayColor="#DDDDDD"
-            onPress={() => navigation.navigate('Property')}>
+            onPress={() => navigation.navigate('Properties')}>
               <Text href="#" style={styles.btn}>View More <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
           </TouchableHighlight>
         </View>

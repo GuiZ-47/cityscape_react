@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const FeaturesPropertyDetails = ({ propertyDetails }) => {
- 
   return (
     <View style={styles.propertyDetailsItem}>
       <Text style={styles.title}> Features </Text>

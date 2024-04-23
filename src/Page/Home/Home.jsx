@@ -1,8 +1,7 @@
 import React, {useState, useEffect } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
 import PropertiesService from '../../Service/PropertyService';
-import MobileMenu from './../../Component/Header/HeaderComponent';
 import BannerSection from '../../Component/Home/BannerSection';
 import AboutSection from '../../Component/Home/AboutSection';
 import PropertySection from '../../Component/Home/PropertySection';
@@ -29,21 +28,30 @@ const Home = ({ navigation }) => {
     });
   }, []);
   
+  if (properties.length === 0) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingTitle}>Loading…</Text>
+        <Image
+          source={require("./../../../assets/loading.webp")}
+          style={styles.image}
+        />
+      </View>
+    );
+  }
+  
   return (
-    <>
-      <MobileMenu />
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <BannerSection />
-        <AboutSection />
-        <PropertySection properties={properties} />
-        <CounterFiveSection />
-        <VideoPopUpSection />
-        <PortfolioSection />
-        <TestimonialsSection />
-        <BlogSection />
-        <Footer />
-      </ScrollView>
-    </>
+    <ScrollView contentContainerStyle={styles.contentContainer}>
+      <BannerSection />
+      <AboutSection />
+      <PropertySection properties={properties} />
+      <CounterFiveSection />
+      <VideoPopUpSection />
+      <PortfolioSection />
+      <TestimonialsSection />
+      <BlogSection />
+      <Footer />
+    </ScrollView>
   );
 };
 
@@ -51,9 +59,25 @@ const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: '#F7F7F7',
     padding: 15,
-    paddingTop: 40,
+    //paddingTop: 40,
     width: '100%',
     alignItems: 'center'
+  },
+  loadingContainer: {
+    flexDirection: 'column',
+    height : '100%'
+  },
+  image: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover'
+  },
+  loadingTitle: {
+    color : 'red',
+     fontSize: 40,
+     zIndex: 10
   }
 });
 
