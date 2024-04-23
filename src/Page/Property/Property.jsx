@@ -8,10 +8,10 @@ import PropertyComponent from '../../Component/Property/PropertyComponent.jsx';
 import PropertySection from "../../Component/Home/PropertySection.js";
 import SubscribeToNewsletter from "../../Component/Newsletter/SubscribeToNewsletterComponent";
 
-export default function Property({ route, navigation })  {  
+export default function Property({ route, navigation }) {
   // Utilisation des hooks et des props de useState
   const [properties, setProperties] = useState([]);
-  
+
   useEffect(() => {
     axios.get(`${GLOBALS.BASE_URL}/api/react/properties`)
     .then(function (response) {
@@ -48,11 +48,11 @@ export default function Property({ route, navigation })  {
 
 const styles = StyleSheet.create({
   contentContainer: {
-    //paddingTop: 40
+    //paddingTop: 40,
   },
   loadingContainer: {
     flexDirection: 'column',
-    height : '100%'
+    height: '100%',
   },
   image: {
     position: 'absolute',
@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
     resizeMode: 'cover'
   },
   loadingTitle: {
-    color : 'red',
-     fontSize: 40,
-     zIndex: 10
-  }
+    color: 'red',
+    fontSize: 40,
+    zIndex: 10,
+  },
 });
