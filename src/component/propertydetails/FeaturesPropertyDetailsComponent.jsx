@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const FeaturesPropertyDetails = ({ propertyDetails }) => {
- 
+const FeaturesPropertyDetails = ({ propertyDetails }) => { 
   if (!propertyDetails[0].propFeatures){
     return (<View style={styles.propertyDetailsItem}>
       <Text style={styles.title}> Features </Text>
@@ -14,6 +13,7 @@ const FeaturesPropertyDetails = ({ propertyDetails }) => {
        </View>
     </View>)
   }
+
   return (
     <View style={styles.propertyDetailsItem}>
       <Text style={styles.title}> Features </Text>

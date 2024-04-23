@@ -1,6 +1,6 @@
 export default {
-  // Ne pas mettre le https , pas de SSl de config sur Docker
-  // trouver la bonne IP pour la requête : aller dans réseau internet -> wifi -> le wifi en question -> adresse IPv4
+  // Ne pas mettre le https, pas de SSl de config sur Docker
+  // Trouver la bonne IP pour la requête : aller dans réseau internet -> wifi -> le wifi en question -> adresse IPv4
   
   //BASE_URL: "http://192.168.1.59:8741", // Adresse IP en cours
   BASE_URL: "http://192.168.1.98:8741", // Adresse IP chez soi
