@@ -13,10 +13,11 @@ import TestimonialsSection from '../../Component/Home/TestimonialsSection';
 import BlogSection from '../../Component/Home/BlogSection';
 import Footer from '../../Component/Footer/Footer';
 
-const Home = ({ navigation }) => {
+const Home = ({ }) => {
   // Utilisation des hooks et des props de useState, ici
   // Pour l'utilisation de Redux, voir le projet « cityscape-react-native-redux »
   const [properties, setProperties] = useState([]);
+  
   useEffect(() => {
     PropertiesService.getProperties()
     .then(function (response) {

@@ -3,6 +3,17 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const FeaturesPropertyDetails = ({ propertyDetails }) => {
  
+  if (!propertyDetails[0].propFeatures){
+    return (<View style={styles.propertyDetailsItem}>
+      <Text style={styles.title}> Features </Text>
+      <View style={styles.content}>
+          <View style={styles.checkListItem}>
+          <Text style={styles.icon}><Text>&#10004;</Text></Text>
+          <Text style={styles.text}> Features unavailables</Text>
+        </View>
+       </View>
+    </View>)
+  }
   return (
     <View style={styles.propertyDetailsItem}>
       <Text style={styles.title}> Features </Text>
