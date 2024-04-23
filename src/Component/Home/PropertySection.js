@@ -132,11 +132,11 @@ const PropertySection = ({ properties }) => {
             style={styles.link}
             activeOpacity={0.6}
             underlayColor="#DDDDDD"
-            onPress={() => navigation.navigate('Property')}>
+            onPress={() => navigation.navigate('Properties')}>
             <Text href="#" style={styles.btn}>View More <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
           </TouchableHighlight>
         </View>
-        
+
         {/* Affichage des bien immobiliers */}
         <FlatList
           data={items}
