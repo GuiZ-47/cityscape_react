@@ -50,7 +50,7 @@ export default function MobileMenu () {
                 <Text style={styles.textLien}> Properties </Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={() => navigation.navigate('PropertyDetails')}>
+              <TouchableOpacity onPress={() => navigation.navigate('PropertyDetails', { propertyId:'random' } )}>
                 <Text style={styles.textLien}> Show Random Property </Text>
               </TouchableOpacity>
           </View>

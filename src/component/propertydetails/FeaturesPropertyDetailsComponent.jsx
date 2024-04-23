@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const FeaturesPropertyDetails = ({ propertyDetails }) => {
  
+  // gérer si les propFeatures est null
   return (
     <View style={styles.propertyDetailsItem}>
       <Text style={styles.title}> Features </Text>
