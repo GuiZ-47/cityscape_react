@@ -1,8 +1,7 @@
 import React, {useState, useEffect } from 'react';
-import { View, Image, Text, ScrollView, StyleSheet, } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
 import PropertiesService from '../../Service/PropertyService';
-import MobileMenu from './../../Component/Header/HeaderComponent';
 import BannerSection from '../../Component/Home/BannerSection';
 import AboutSection from '../../Component/Home/AboutSection';
 import PropertySection from '../../Component/Home/PropertySection';
@@ -42,21 +41,30 @@ const Home = ({ }) => {
     );
   }
   
+  if (properties.length === 0) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingTitle}>Loading…</Text>
+        <Image
+          source={require("./../../../assets/loading.webp")}
+          style={styles.image}
+        />
+      </View>
+    );
+  }
+  
   return (
-    <>
-      <MobileMenu />
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        <BannerSection />
-        <AboutSection />
-        <PropertySection properties={properties} />
-        <CounterFiveSection />
-        <VideoPopUpSection />
-        <PortfolioSection />
-        <TestimonialsSection />
-        <BlogSection />
-        <Footer />
-      </ScrollView>
-    </>
+    <ScrollView contentContainerStyle={styles.contentContainer}>
+      <BannerSection />
+      <AboutSection />
+      <PropertySection properties={properties} />
+      <CounterFiveSection />
+      <VideoPopUpSection />
+      <PortfolioSection />
+      <TestimonialsSection />
+      <BlogSection />
+      <Footer />
+    </ScrollView>
   );
 };
 
@@ -64,9 +72,9 @@ const styles = StyleSheet.create({
   contentContainer: {
     backgroundColor: '#F7F7F7',
     padding: 15,
-    paddingTop: 40,
+    //paddingTop: 40,
     width: '100%',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   loadingContainer: {
     flexDirection: 'column',
