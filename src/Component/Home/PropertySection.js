@@ -132,7 +132,7 @@ const PropertySection = ({ properties }) => {
             style={styles.link}
             activeOpacity={0.6}
             underlayColor="#DDDDDD"
-            onPress={() => navigation.navigate('Properties')}>
+            onPress={() => navigation.navigate('Property')}>
             <Text href="#" style={styles.btn}>View More <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
           </TouchableHighlight>
         </View>
