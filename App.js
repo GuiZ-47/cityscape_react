@@ -37,44 +37,42 @@ function LogoTitle() {
 
 const Tab = createBottomTabNavigator();
 
-export default function App() {  
+export default function App() {
   return (
     <>
-    <NavigationContainer>
-      <Tab.Navigator backBehavior='history'
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+      <NavigationContainer>
+        <Tab.Navigator backBehavior='history'
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
 
-            if (route.name === 'Home') {
-              iconName = focused
-                ? faHouse
-                : faHouse;
-            } else if (route.name === 'Properties') {
-              iconName = focused ? faCity : faCity;
-            } else if (route.name === 'PropertyDetails') {
-              iconName = focused ? faBuilding : faBuilding;
+              if (route.name === 'Home') {
+                iconName = focused ? faHouse : faHouse;
+              } else if (route.name === 'Properties') {
+                iconName = focused ? faCity : faCity;
+              } else if (route.name === 'PropertyDetails') {
+                iconName = focused ? faBuilding : faBuilding;
+              }
+
+              // You can return any component that you like here!
+              return <FontAwesomeIcon icon={iconName} size={size} color={color} />;
+            },
+            tabBarActiveTintColor: '#F69120',
+            tabBarInactiveTintColor: '#BDBDBD',
+            headerStyle: {
+              backgroundColor: '#BDBDBD',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitle: (props) => <LogoTitle {...props} />,
+            headerTitleStyle: {
+              fontWeight: 'bold',
             }
-
-            // You can return any component that you like here!
-            return <FontAwesomeIcon icon={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: '#F69120',
-          tabBarInactiveTintColor: '#BDBDBD',
-          headerStyle: {
-            backgroundColor: '#BDBDBD',
-          },
-          headerTintColor: '#FFFFFF',
-          headerTitle: (props) => <LogoTitle {...props} />,
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          }
-        })}>
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Properties" component={Property} />
-        <Tab.Screen name="PropertyDetails" component={PropertyDetails} initialParams={{ propertyId: 'random' }} options={{ title: 'Property Details' }} />
-      </Tab.Navigator>
-    </NavigationContainer>
+          })}>
+          <Tab.Screen name="Home" component={Home} />
+          <Tab.Screen name="Properties" component={Property} />
+          <Tab.Screen name="PropertyDetails" component={PropertyDetails} initialParams={{ propertyId: 'random' }} options={{ title: 'Property Details' }} />
+        </Tab.Navigator>
+      </NavigationContainer>
     </>
   );
 }

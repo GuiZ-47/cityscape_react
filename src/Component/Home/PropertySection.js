@@ -7,33 +7,90 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons/faMapMarkerAlt';
 import { faBed } from '@fortawesome/free-solid-svg-icons/faBed';
 import { faBath } from '@fortawesome/free-solid-svg-icons/faBath';
+import { FontAwesome6 } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
+
+import axios from 'axios';
 
 import GLOBALS from '../Common/Globals';
 
+import FilterModal from '../Filter/FilterModal';
+import { Center } from 'native-base';
+
 const PropertySection = ({ properties }) => {
+
+  // Pour la navigation entre les pages
   const navigation = useNavigation();
 
-  // Pour la pagination
+
+  // states pour la pagination
   const itemsPerPage = 10;
   const [totalPages, setTotalpages] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [items, setItems] = useState([]);
+
+  // states pour le filtre
+  const [modalVisible, setModalVisible] = useState(false);
+  const [intermediateFilter, setIntermediateFilter] = useState([]);
+  const [filter, setFilter] = useState([]);
+  const [lastFilter, setLastFilter] = useState([]);
+  const [filteredProperties, setFilteredProperties] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
-  // s'active à chaque changement de currentPage
-  useEffect(() => {
-    sliceProperties();
-  }, [currentPage,]);
 
+  // useEffect s'active à chaque changement de 'currentPage', ATTENTION à mettre tout les states AVANT le useEffect !!!!!
+  useEffect(() => {
+
+    // Si un filtre est actif, on fait une requête à l'API mais seulement s'il n'as pas déjà été appliqué
+    if (filter.length !== 0 && areArraysDifferent(filter, lastFilter)) {
+
+      // Convertir le tableau des Id à filtrer en une chaîne de requête
+      const queryString = filter.map(id => `categoryIds[]=${id}`).join('&');
+
+      // Ecran d'attente pour temporiser le temps de la requête
+      setRefreshing(true);
+      console.log("useEffect trigger");
+
+      axios.get(`http://192.168.1.98:8741/api/react/properties/filtered?${queryString}`)
+        .then(response => {
+          setFilteredProperties(response.data);
+          setLastFilter(filter);
+          setRefreshing(false);
+          // console.log(JSON.stringify(response.data, null, 4));
+          // console.log(Date());
+        })
+        .catch(error => {
+          setRefreshing(false);
+          console.error('Erreur lors de la requête:', error);
+        });
+    };
+
+      sliceProperties();
+    
+
+    console.log("slice trigger dans le useEffect")
+  },
+    // Comme le bouton qui applique le filtre renvoie aussi à la première page, on ne rajoute pas filter dans le tableau des changements de states qui doivent déclencher useEffect
+    [currentPage, filter, refreshing]);
+
+  console.log(JSON.stringify(filteredProperties[0], null, 4));
+  console.log("nombres de propriétés filtrées : " + filteredProperties.length);
+
+  console.log('filteredProperties : ' + Date());
+
+  // ------------------------ PAGINATION ------------------------------------
   // Sélectionne dans le state 'properties' les propriétés à afficher (en fonction de la page active)
   // Et insère la sélection dans le state 'items'
   function sliceProperties() {
-    let data = properties.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    const propertiesToPaginate = filteredProperties.length !== 0 ? filteredProperties : properties;
+
+    let data = propertiesToPaginate.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+    setItems(data);
+    setTotalpages(Math.floor(propertiesToPaginate.length / itemsPerPage));
     // console.log(JSON.stringify(data, null, 4));
     console.log(`Page affichée : ${currentPage}`);
     console.log(Date());
-    setItems(data);
-    setTotalpages(Math.floor(properties.length / itemsPerPage));
   }
 
   // change la page active
@@ -72,7 +129,35 @@ const PropertySection = ({ properties }) => {
 
     return buttons;
   };
+  // ------------------------- PAGINATION FIN ------------------------------------------
 
+  // -------------------------------- FILTRE PAR CATEGORIES ----------------------------
+  const areArraysDifferent = (arr1, arr2) => {
+    return JSON.stringify(arr1) !== JSON.stringify(arr2);
+  };
+
+  console.log(`filtre principal : ${filter}`);
+  console.log(`dernier filtre : ${lastFilter}`);
+
+  // ouverture de la modal et requête pour recup les catégories
+  const handleFilterButtonClick = () => {
+    setModalVisible(!modalVisible);
+    axios.get(`http://192.168.1.98:8741/api/react/categories`)
+      .then(response => {
+        // Gérez la réponse de l'API
+        setCategories(response.data);
+
+      })
+      .catch(error => {
+        // Gérez les erreurs
+        console.error('Erreur lors de la requête des categories:', error);
+        setModalVisible(!modalVisible);
+      });
+  };
+
+  // -------------------------------- FILTRE FIN -------------------------------------
+
+  // Modèle pour la FlatLst
   const renderItem = ({ item }) => (
     <View style={styles.row}>
       <View style={styles.col}>
@@ -98,6 +183,7 @@ const PropertySection = ({ properties }) => {
                 <Text style={styles.link}>{item.propTitle}</Text>
               </TouchableHighlight>
             </Text>
+            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesome6 name="house" size={16} color="white" /> </Text>{item.catMainCategoryName} - {item.catSubCategoryName}</Text>
             <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>66 Broklyant, New York America</Text>
             <View style={styles.propertyItemBottom}>
               <View style={styles.amenitiesList}>
@@ -121,38 +207,47 @@ const PropertySection = ({ properties }) => {
   );
 
   return (
-    <View style={styles.property}>
-      <View style={styles.container}>
-        <View style={styles.sectionHeading}>
-          <View style={styles.sectionHeadingInner}>
-            <Text style={styles.sectionHeadingSubtitle}><Text style={styles.textGradient}>Latest property</Text></Text>
-            <Text style={styles.sectionHeadingTitle}>Prestige Property Management property for you</Text>
+    <>
+      {/* Fenêtre Modal pour le Filtre par catégories */}
+      <FilterModal modalVisible={modalVisible} setModalVisible={setModalVisible}
+        setCurrentPage={setCurrentPage}
+        categories={categories}
+        filter={filter} setFilter={setFilter}
+        intermediateFilter={intermediateFilter} setIntermediateFilter={setIntermediateFilter}
+        filteredProperties={filteredProperties} setFilteredProperties={setFilteredProperties}
+      />
+
+      <View style={styles.property}>
+        <View style={styles.container}>
+          <View style={styles.sectionHeading}>
+            {/* Feedback le temps de recevoir la query */}
+            {refreshing && <Text style={styles.loadingMessage}>  Loading Filtered Properties...</Text>}
+            <TouchableHighlight
+              style={styles.filterButton}
+              activeOpacity={0.6}
+              underlayColor="#DDDDDD"
+              onPress={() => handleFilterButtonClick()}>
+              <Text href="#" style={styles.btn}> Filter Properties    <Text style={styles.iconRight}><FontAwesome name="arrow-right" size={20} color="white" /></Text></Text>
+            </TouchableHighlight>
           </View>
-          <TouchableHighlight
-            style={styles.link}
-            activeOpacity={0.6}
-            underlayColor="#DDDDDD"
-            onPress={() => navigation.navigate('Properties')}>
-              <Text href="#" style={styles.btn}>View More <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
-          </TouchableHighlight>
+
+          {/* Affichage des bien immobiliers */}
+          <FlatList
+            data={items}
+            renderItem={renderItem}
+            keyExtractor={item => item.id}
+            ListEmptyComponent={handleEmpty}
+          // scrollEnabled={false}
+          />
+
+          {/* Affichage des boutons de pagination */}
+          <View style={styles.paginationContainer}>
+            {renderPaginationButtons()}
+          </View>
+
         </View>
-
-        {/* Affichage des bien immobiliers */}
-        <FlatList
-          data={items}
-          renderItem={renderItem}
-          keyExtractor={item => item.id}
-          ListEmptyComponent={handleEmpty}
-          scrollEnabled={false}
-        />
-
-        {/* Affichage des boutons de pagination */}
-        <View style={styles.paginationContainer}>
-          {renderPaginationButtons()}
-        </View>
-
       </View>
-    </View>
+    </>
   );
 };
 
@@ -353,6 +448,17 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
+  },
+
+  filterButton: {
+    backgroundColor: 'orange'
+  },
+  filterButtonText: {
+    color: 'orange',
+  },
+  loadingMessage: {
+    backgroundColor: 'orange',
+    fontSize: 20,
   },
 });
 
