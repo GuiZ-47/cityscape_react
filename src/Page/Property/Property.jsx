@@ -5,7 +5,7 @@ import axios from 'axios';
 import GLOBALS from "../../Component/Common/Globals.js";
 import BreadcrumbProp from "../../Component/Property/BreadcrumbPropComponent";
 import PropertyComponent from '../../Component/Property/PropertyComponent.jsx';
-import PropertySection from "../../Component/Home/PropertySection.js";
+import PropertySectionComp from "../../Component/Property/PropertySectionComp";
 import SubscribeToNewsletter from "../../Component/Newsletter/SubscribeToNewsletterComponent";
 
 export default function Property({ route, navigation }) {
@@ -40,7 +40,7 @@ export default function Property({ route, navigation }) {
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <BreadcrumbProp />
       <PropertyComponent />
-      <PropertySection properties={properties} setProperties={setProperties}/>
+      <PropertySectionComp properties={properties} setProperties={setProperties}/>
       <SubscribeToNewsletter />    
     </ScrollView>
   );
