@@ -21,10 +21,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "googleServicesFile": "./google-services.json",
+      "package": "com.guiz.cityscape"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "deb75a56-facd-48b9-bdfb-29ab2e1eaace"
+      }
+    },
+    "plugins": [
+      "@react-native-firebase/app"
+    ]
   }
 }

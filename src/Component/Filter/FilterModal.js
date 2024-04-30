@@ -47,18 +47,18 @@ const FilterModal = ({ modalVisible, setModalVisible, setCurrentPage, categories
       visible={modalVisible}
       style={{ flex: 1, width :'100%'}}
      >
-      <SafeAreaView style={{ flex: 1, padding: 20 }}>
+      <SafeAreaView style={{ flex: 1, padding: 20, gap: 20 }}>
         <View style={{ marginBottom: 20, paddingHorizontal: 30 }}>
           <Text style={{ fontSize: 26 }}>Filtering Properties</Text>
         </View>
 
         <RadioButton categories={categories} intermediateFilter={intermediateFilter} setIntermediateFilter={setIntermediateFilter} />
-        <Button title="Apply" onPress={() => {
+        <Button title="Apply" color='#F69120' onPress={() => {
           setModalVisible(!modalVisible);
           setFilter(intermediateFilter);
           setCurrentPage(0);
         }} />
-        <Button title="Clear" onPress={() => {
+        <Button title="Clear" color='#F69120' onPress={() => {
           setModalVisible(!modalVisible);
           setFilter([]);
           setIntermediateFilter([]);
@@ -75,7 +75,9 @@ const styles = StyleSheet.create({
     // height: '100%',
   },
   image: {
-    width: '130%',
+    width: '100%',
+    height:'100%',
+    resizeMode:'contain'
   },
 });
 

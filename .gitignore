@@ -35,3 +35,12 @@ yarn-error.*
 *.tsbuildinfo
 /nbproject/
 App copy.js
+cityscape-d0efc-firebase-adminsdk-9fuye-03001e5e6a.json
+eas.json
+google-services.json
+notes react.odt
+notes react.docx
+src/Component/Notification/ExpoPushNotification.js
+src/Component/Notification/notificationPush.js
+app.json
+eas.json

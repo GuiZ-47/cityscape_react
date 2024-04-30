@@ -14,6 +14,10 @@ import { faBuilding } from '@fortawesome/free-solid-svg-icons/faBuilding';
 import Home from './src/Page/Home/Home';
 import Property from './src/Page/Property/Property';
 import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage';
+import PushNotification from './src/Component/Notification/notificationPush';
+import Notification from './src/Component/Notification/NotificationPushGuillaume';
+
+
 
 // Pour une utilisation de Redux, voir le projet « cityscape-react-native-redux »
 const Stack = createNativeStackNavigator();
@@ -40,6 +44,8 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <>
+    {/* <PushNotification/> */}
+    < Notification />
       <NavigationContainer>
         <Tab.Navigator backBehavior='history'
           screenOptions={({ route }) => ({

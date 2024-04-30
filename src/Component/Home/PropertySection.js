@@ -52,7 +52,7 @@ const PropertySection = ({ properties }) => {
       setRefreshing(true);
       console.log("useEffect trigger");
 
-      axios.get(`http://192.168.1.98:8741/api/react/properties/filtered?${queryString}`)
+      axios.get(`${GLOBALS.BASE_URL}/api/react/properties/filtered?${queryString}`)
         .then(response => {
           setFilteredProperties(response.data);
           setLastFilter(filter);
@@ -142,7 +142,7 @@ const PropertySection = ({ properties }) => {
   // ouverture de la modal et requête pour recup les catégories
   const handleFilterButtonClick = () => {
     setModalVisible(!modalVisible);
-    axios.get(`http://192.168.1.98:8741/api/react/categories`)
+    axios.get(`${GLOBALS.BASE_URL}/api/react/categories`)
       .then(response => {
         // Gérez la réponse de l'API
         setCategories(response.data);
