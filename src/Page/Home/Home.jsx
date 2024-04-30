@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
 import PropertiesService from '../../Service/PropertyService';
+import NotificationSteven from '../../Component/Home/NotificationSteven';
 import BannerSection from '../../Component/Home/BannerSection';
 import AboutSection from '../../Component/Home/AboutSection';
 import PropertySection from '../../Component/Home/PropertySection';
@@ -55,6 +56,7 @@ const Home = ({ }) => {
   
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
+      <NotificationSteven />
       <BannerSection />
       <AboutSection />
       <PropertySection properties={properties} />
@@ -89,8 +91,8 @@ const styles = StyleSheet.create({
   },
   loadingTitle: {
     color : 'red',
-     fontSize: 40,
-     zIndex: 10,
+    fontSize: 40,
+    zIndex: 10,
   },
 });
 

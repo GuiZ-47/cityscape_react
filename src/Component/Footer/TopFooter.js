@@ -48,15 +48,15 @@ const TopFooter = () => {
             <View style={styles.footerItem}>
               <Text style={styles.footerItemTitle}>Services</Text>
                 <FlatList style={styles.footerMenu}
-                    scrollEnabled={false}
-                    data={[
-                      {key: 'Reliable Rentals'},
-                      {key: 'Golden Key Properties'},
-                      {key: 'Swift Home Sales'},
-                      {key: 'Elite Realty Services'},
-                      {key: 'Dream Property Solutions'}
-                    ]}
-                    renderItem={({item}) => <View style={styles.footerMenuItem}><Text href="property.html" style={styles.footerMenuLink}>{item.key}</Text></View>}
+                  scrollEnabled={false}
+                  data={[
+                    {key: 'Reliable Rentals'},
+                    {key: 'Golden Key Properties'},
+                    {key: 'Swift Home Sales'},
+                    {key: 'Elite Realty Services'},
+                    {key: 'Dream Property Solutions'}
+                  ]}
+                  renderItem={({item}) => <View style={styles.footerMenuItem}><Text href="property.html" style={styles.footerMenuLink}>{item.key}</Text></View>}
                 />
             </View>
           </View>
@@ -69,7 +69,7 @@ const TopFooter = () => {
               <View action="#" style={styles.subscribeBox}>
                 <View style={styles.inputGroup}>
                   <TextInput type="text" style={styles.formControl} placeholder="Your mail address" />
-                  <Button title="Suscribe to the newslettter" type="submit" style={styles.inputGroupText}><FontAwesomeIcon icon={faPaperPlane} /></Button>
+                  <Button title="Suscribe to the newslettter" color="#F69120" type="submit" style={styles.inputGroupText}><FontAwesomeIcon icon={faPaperPlane} /></Button>
                 </View>
               </View>
 

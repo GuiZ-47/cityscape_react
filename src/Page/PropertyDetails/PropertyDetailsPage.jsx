@@ -24,33 +24,33 @@ export default function PropertyDetails({ route, navigation }) {
   
   // Max Id dans la base de données
 
-  const NbProperties = 99; 
+  const NbProperties = 25;
   
-  const [Id, setId] = useState();
+  const [id, setId] = useState();
   const [refreshing, setRefreshing] = useState(true);
   const [propertyDetails, setPropertyDetails] = useState([]);
 
-  // choix aléatoire d'une propriété à afficher
+  // Choix aléatoire d'une propriété à afficher
   if (route.params.propertyId == 'random'){
     const newId = Math.floor(Math.random() * NbProperties);
     setId(newId);
-    // on change 'route.params.propertyId' avec l'Id choisi aléatoirement pour éviter de boucler à l'infini
+    // On change 'route.params.propertyId' avec l'Id choisi aléatoirement pour éviter de boucler à l'infini
     route.params.propertyId = newId;
 
   // Si l'Id à afficher est déjà le bon, pas de changement du state 'Id' pour éviter de boucler à l'infini
-  } else if (Id != route.params.propertyId) {
+  } else if (id != route.params.propertyId) {
     const newId = route.params.propertyId;
     setId(newId);
   }
 
   useEffect(() => {
-    console.log(`Cette page affiche la propriété d'ID : ${Id}`);
+    console.log(`Cette page affiche la propriété d'ID : ${id}`);
     fetchPropertyDetails();
-  }, [Id,]);
+  }, [id,]);
 
   function fetchPropertyDetails() {
     setRefreshing(true);
-    axios.get(`${GLOBALS.BASE_URL}/api/react/property/${Id}`)
+    axios.get(`${GLOBALS.BASE_URL}/api/react/property/${id}`)
       .then(function (response) {
         setPropertyDetails(response.data);
         setRefreshing(false);

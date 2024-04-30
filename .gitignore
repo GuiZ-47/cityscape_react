@@ -35,3 +35,6 @@ yarn-error.*
 *.tsbuildinfo
 /nbproject/
 App copy.js
+
+cityscape-right-now-fdfd7045d08c.json
+google-services.json

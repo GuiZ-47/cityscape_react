@@ -10,7 +10,7 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons/faHouse';
 import { faCity } from '@fortawesome/free-solid-svg-icons/faCity';
 import { faBuilding } from '@fortawesome/free-solid-svg-icons/faBuilding';
 
-//import MobileMenu from './src/Component/Header/HeaderComponent';
+// import MobileMenu from './src/Component/Header/HeaderComponent';
 import Home from './src/Page/Home/Home';
 import Property from './src/Page/Property/Property';
 import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage';
