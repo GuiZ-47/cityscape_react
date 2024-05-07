@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, Component } from 'react';
 import { Image } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
@@ -9,11 +9,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons/faHouse';
 import { faCity } from '@fortawesome/free-solid-svg-icons/faCity';
 import { faBuilding } from '@fortawesome/free-solid-svg-icons/faBuilding';
-
+// import registerNNPushToken from 'native-notify';
+import * as Notifications from "expo-notifications";
 //import MobileMenu from './src/Component/Header/HeaderComponent';
 import Home from './src/Page/Home/Home';
 import Property from './src/Page/Property/Property';
 import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage';
+// import Constants from 'expo-constants';
+
+
+
+
+
 
 // Pour une utilisation de Redux, voir le projet « cityscape-react-native-redux »
 const Stack = createNativeStackNavigator();
@@ -37,7 +44,10 @@ function LogoTitle() {
 
 const Tab = createBottomTabNavigator();
 
+
+
 export default function App() {  
+  // registerNNPushToken(20964, 'zl37klKBs2XcNC9yiiz58X'); 
   return (
     <>
     <NavigationContainer>
@@ -70,6 +80,7 @@ export default function App() {
             fontWeight: 'bold',
           }
         })}>
+          
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Properties" component={Property} />
         <Tab.Screen name="PropertyDetails" component={PropertyDetails} initialParams={{ propertyId: 'random' }} options={{ title: 'Property Details' }} />
@@ -78,3 +89,4 @@ export default function App() {
     </>
   );
 }
+

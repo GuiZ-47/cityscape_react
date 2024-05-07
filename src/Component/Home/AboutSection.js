@@ -33,7 +33,7 @@ const AboutSection = () => {
                   <SvgUri
                     width={400}
                     height={300}
-                    uri={require('../../../assets/images/icons/about-icon.svg')}
+                    source={require('../../../assets/images/icons/about-icon.svg')}
                   />
                 </View>
                 <View style={styles.aboutBoxContent}>

@@ -4,9 +4,9 @@ import axios from 'axios';
 
 import GLOBALS from "../../Component/Common/Globals.js";
 import BreadcrumbProp from "../../Component/Property/BreadcrumbPropComponent";
-import PropertyComponent from '../../Component/Property/PropertyComponent.jsx';
+import PropertyComponent from "../../Component/Property/PropertyComponent";
 import PropertySectionComp from "../../Component/Property/PropertySectionComp";
-import SubscribeToNewsletter from "../../Component/Newsletter/SubscribeToNewsletterComponent";
+import SubscribeToNewsletterComponent from "../../Component/Newsletter/SubscribeToNewsletterComponent";
 
 export default function Property({ route, navigation }) {
   // Utilisation des hooks et des props de useState
@@ -41,7 +41,7 @@ export default function Property({ route, navigation }) {
       <BreadcrumbProp />
       <PropertyComponent />
       <PropertySectionComp properties={properties} setProperties={setProperties}/>
-      <SubscribeToNewsletter />    
+      <SubscribeToNewsletterComponent />    
     </ScrollView>
   );
 };

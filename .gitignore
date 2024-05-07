@@ -35,3 +35,8 @@ yarn-error.*
 *.tsbuildinfo
 /nbproject/
 App copy.js
+google-services.json
+eas.json
+eas.json
+build.gradle.kts
+src/Component/Services/NotificationServices.js
