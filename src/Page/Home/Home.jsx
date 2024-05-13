@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 
 import PropertiesService from '../../Service/PropertyService';
@@ -13,7 +13,7 @@ import TestimonialsSection from '../../Component/Home/TestimonialsSection';
 import BlogSection from '../../Component/Home/BlogSection';
 import Footer from '../../Component/Footer/Footer';
 
-const Home = ({ }) => {
+const Home = () => {
   // Utilisation des hooks et des props de useState, ici
   // Pour l'utilisation de Redux, voir le projet « cityscape-react-native-redux »
   const [properties, setProperties] = useState([]);
@@ -33,18 +33,6 @@ const Home = ({ }) => {
   if (properties.length === 0) {
     return (
       <View style={styles.loadingContainer}>
-        <Text style={styles.loadingTitle}>Loading ...</Text>
-        <Image
-          source={require("./../../../assets/loading.webp")}
-          style={styles.image}
-        />
-      </View>
-    );
-  }
-  
-  if (properties.length === 0) {
-    return (
-      <View style={styles.loadingContainer}>
         <Text style={styles.loadingTitle}>Loading…</Text>
         <Image
           source={require("./../../../assets/loading.webp")}
@@ -53,7 +41,7 @@ const Home = ({ }) => {
       </View>
     );
   }
-  
+    
   return (
     <ScrollView contentContainerStyle={styles.contentContainer}>
       <NotificationSteven />

@@ -175,7 +175,7 @@ const PropertySection = ({ properties }) => {
                 <Text style={styles.link}>{item.propTitle}</Text>
               </TouchableHighlight>
             </Text>
-            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>66 Broklyant, New York America</Text>
+            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>{item.propCity}, {item.propCountry}</Text>
             <View style={styles.propertyItemBottom}>
               <View style={styles.amenitiesList}>
                 <View style={styles.amenitiesListItem}>

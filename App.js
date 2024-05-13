@@ -9,11 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons/faHouse';
 import { faCity } from '@fortawesome/free-solid-svg-icons/faCity';
 import { faBuilding } from '@fortawesome/free-solid-svg-icons/faBuilding';
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 
 // import MobileMenu from './src/Component/Header/HeaderComponent';
 import Home from './src/Page/Home/Home';
 import Property from './src/Page/Property/Property';
 import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage';
+import Login from './src/Page/Login/Login';
 
 // Pour une utilisation de Redux, voir le projet « cityscape-react-native-redux »
 const Stack = createNativeStackNavigator();
@@ -54,6 +56,8 @@ export default function App() {
               iconName = focused ? faCity : faCity;
             } else if (route.name === 'PropertyDetails') {
               iconName = focused ? faBuilding : faBuilding;
+            } else if (route.name === 'Login') {
+              iconName = focused ? faUser : faUser;
             }
 
             // You can return any component that you like here!
@@ -73,6 +77,7 @@ export default function App() {
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Properties" component={Property} />
         <Tab.Screen name="PropertyDetails" component={PropertyDetails} initialParams={{ propertyId: 'random' }} options={{ title: 'Property Details' }} />
+        <Tab.Screen name="Login" component={Login} />
       </Tab.Navigator>
     </NavigationContainer>
     </>
