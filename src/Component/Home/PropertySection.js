@@ -162,7 +162,7 @@ const PropertySection = ({ properties }) => {
               onPress={() => navigation.navigate('PropertyDetails', { propertyId: item.propId })}>
               <Image source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}${item.picName}` }} alt="" style={styles.coverImg} />
             </TouchableHighlight>
-            <Text style={styles.propertyItemBadge}>Sale {item.propId}</Text>
+            <View style={styles.propertyButton}><Text style={styles.propertyItemBadge}>Sale {item.propId}</Text></View>
           </View>
           <View style={styles.propertyItemContent}>
             <Text style={styles.propertyItemPrice}>${item.propPrice} <Text style={styles.day}>/per day</Text></Text>
@@ -175,7 +175,7 @@ const PropertySection = ({ properties }) => {
                 <Text style={styles.link}>{item.propTitle}</Text>
               </TouchableHighlight>
             </Text>
-            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>{item.propCity}, {item.propCountry}</Text>
+            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>{item.propLocation}, {item.propCity}, {item.propCountry}</Text>
             <View style={styles.propertyItemBottom}>
               <View style={styles.amenitiesList}>
                 <View style={styles.amenitiesListItem}>
@@ -189,7 +189,7 @@ const PropertySection = ({ properties }) => {
                   <Text style={styles.bedsAndBaths}>{item.propBaths} Baths</Text>
                 </View>
               </View>
-              <Text href="#" style={styles.simpleBtn}>Book Now<Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
+              <Text href="#" style={styles.simpleBtn}>Book Now <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
             </View>
           </View>
         </View>
@@ -246,8 +246,8 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#181616',
     color: 'white',
-    paddingTop: '60px',
-    paddingBottom: '60px'
+    borderTopLeftRadius: 17.5,
+    borderBottomRightRadius: 17.5
   },
   container: {
     width: '100%',
@@ -283,6 +283,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   btn: {
+    borderTopLeftRadius: 17.5,
     textAlign: 'center',
     fontWeight: '600',
     color: 'white',
@@ -307,14 +308,9 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     width: '100%',
     maxWidth: '100%',
-    paddingRight: 'calc(1.5 * .5)',
-    paddingLeft: 'calc(1.5 * .5)',
-    marginTop: 1.5
   },
   propertyItem: {
     backgroundColor: '#211F1F',
-    borderRadius: 5,
-    overflow: 'hidden',
     position: 'relative',
     transition: '0.2s linear',
     boxShadow: '0px 4.8px 24.4px -6px rgba(19, 16, 34, 0.1), 0px 4px 13px -2px rgba(19, 16, 34, 0.06)'
@@ -331,16 +327,20 @@ const styles = StyleSheet.create({
   },
   coverImg: {
     width: 400,
-    height: 250,
+    height: 200,
     //resizeMode: 'contain'
   },
   propertyItemBadge: {
     textAlign: 'center',
+    opacity: 0.9,
     position: 'absolute',
-    right: 0,
-    top: 0,
-    padding: '5px 10px',
-    borderRadius: 5,
+    left: 0,
+    bottom: 0,
+    padding: 7.5,
+    backgroundColor: '#F69120',
+    borderTopLeftRadius: 17.5,
+    borderBottomRightRadius: 17.5,
+    fontWeight: '600',
     color: 'white',
     zIndex: 1,
     textTransform: 'uppercase',
@@ -350,7 +350,7 @@ const styles = StyleSheet.create({
   propertyItemContent: {
     padding: 'clamp(1rem, -0.065rem + 2.219vw, 1.875rem)',
     color: 'white',
-    flexGrow: 1
+    //flexGrow: 1
   },
   propertyItemPrice: {
     textAlign: 'center',
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
   propertyItemTitle: {
     textAlign: 'center',
     color: 'white',
-    padding: 10,
+    padding: 5,
     fontSize: 20,
     //fontWeight: '400'
   },
@@ -375,14 +375,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 14,
-    padding: 10,
+    //padding: 10,
     //fontWeight: '300',
     opacity: 0.8,
     gap: 0.5
   },
   propertyItemBottom: {
     //flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    //justifyContent: 'space-between',
+    alignItems: 'center',
     gap: 0.5
   },
   amenitiesList: {
@@ -409,7 +410,13 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   simpleBtn: {
-    textAlign: 'right',
+    textAlign: 'center',
+    padding: 7.5,
+    marginBottom: 15,
+    backgroundColor: '#F69120',
+    borderTopLeftRadius: 17.5,
+    borderBottomRightRadius: 17.5,
+    fontWeight: '600',
     fontSize: 20,
     color: 'white',
     textTransform: 'uppercase',
@@ -420,7 +427,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 8,
-    backgroundColor: 'transparent',
+    backgroundColor: '#211F1F',
+    borderBottomRightRadius: 17.5,
   },
   paginationButton: {
     justifyContent: 'center',

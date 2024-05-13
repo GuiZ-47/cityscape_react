@@ -15,10 +15,7 @@ const Breadcrumb = ({ propertyDetails }) => {
               <Text style={styles.breadcrumbTitle}>Property Details</Text>
               <View style={styles.breadcrumbList}>
                 <Text style={styles.breadcrumbItem}>
-                  <Text>ID {propertyDetails[0].propId}</Text>
-                </Text>
-                <Text style={styles.breadcrumbItem}>
-                  <Text> : </Text>
+                  <Text>ID {propertyDetails[0].propId}: </Text>
                 </Text>
                 <Text style={styles.breadcrumbItem}>
                   <Text style={styles.breadcrumbItemText}>"{propertyDetails[0].propTitle}"</Text>
@@ -35,20 +32,20 @@ const Breadcrumb = ({ propertyDetails }) => {
 const styles = StyleSheet.create({
   breadcrumb: {
     paddingVertical: 5,
-    backgroundColor: 'black',
+    backgroundColor: '#181616',
+    justifyContent: 'center',
+    alignItems: 'center',
     height: 200,
   },
   breadcrumbImg: {
     position: 'absolute',
+    width: '100%',
     bottom: 0,
-
   },
   container: {
-    flex: 1,
+    //flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-
-
+    width: 319,
   },
   row: {
     // Define your styles for the row
@@ -62,7 +59,6 @@ const styles = StyleSheet.create({
   breadcrumbTitle: {
     color: 'white',
     fontSize: 20,
-
   },
   breadcrumbList: {
     flexDirection: 'row',

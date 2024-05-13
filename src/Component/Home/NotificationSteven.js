@@ -50,7 +50,7 @@ export default function NotificationSteven() {
         <Text>Body: {notification && notification.request.content.body}</Text>
         <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
       </View>
-      <Button title="Send Push Notification" onPress={async () => {await sendPushNotification();}} />
+      <Button title="Send Push Notification" color="#F69120" onPress={async () => {await sendPushNotification();}} />
     </View>
   );
 }

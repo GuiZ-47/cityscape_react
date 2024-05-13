@@ -13,7 +13,7 @@ import RadioButton from './RadioButton'
 // import {initialFilter} from '../data/initialFilter'
 
 const FilterModal = ({ modalVisible, setModalVisible, setCurrentPage, categories, filter, setFilter, setIntermediateFilter, intermediateFilter, setFilteredProperties}) => {
-  console.log(`filtre intermédiare : ${intermediateFilter}`);
+  console.log(`filtre intermédiaire : ${intermediateFilter}`);
    
   if (categories.length === 0 ) {
     return (
@@ -41,7 +41,7 @@ const FilterModal = ({ modalVisible, setModalVisible, setCurrentPage, categories
       animationType="slide"
       transparent={false}
       visible={modalVisible}
-      style={{ flex: 1, width: '100%'}}
+      style={{ flex: 1, width: '100%' }}
      >
       <SafeAreaView style={{ flex: 1, padding: 20, gap: 20 }}>
         <View style={{ marginBottom: 20, paddingHorizontal: 30 }}>

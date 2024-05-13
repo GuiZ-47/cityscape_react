@@ -127,7 +127,8 @@ const styles = StyleSheet.create({
   aboutButton: {
     margin: 20,
     backgroundColor: '#F69120',
-    borderRadius: 5,
+    borderTopLeftRadius: 17.5,
+    borderBottomRightRadius: 17.5,
     //backgroundColor: 'linear-gradient(90deg, #F69220 0.04%, #F68E20 28.67%, #F48421 54.05%, #F37221 78.11%, #F05A22 100.04%)',
   },
   btn: {
