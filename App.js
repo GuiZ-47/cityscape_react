@@ -15,7 +15,9 @@ import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import Home from './src/Page/Home/Home';
 import Property from './src/Page/Property/Property';
 import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage';
-import Login from './src/Page/Login/Login';
+import User from './src/Page/User/UserPage';
+import PushNotification from './src/Component/Notification/notificationPush';
+import Notification from './src/Component/Notification/NotificationPushGuillaume';
 
 // Pour une utilisation de Redux, voir le projet « cityscape-react-native-redux »
 const Stack = createNativeStackNavigator();
@@ -39,15 +41,17 @@ function LogoTitle() {
 
 const Tab = createBottomTabNavigator();
 
-export default function App() {  
+export default function App() {
   return (
     <>
-    <NavigationContainer>
-      <Tab.Navigator backBehavior='history'
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
+      {/* <PushNotification/> */}
+      {/* < Notification /> */}
+      <NavigationContainer>
+        <Tab.Navigator backBehavior='history'
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+            
             if (route.name === 'Home') {
               iconName = focused
                 ? faHouse
@@ -56,7 +60,7 @@ export default function App() {
               iconName = focused ? faCity : faCity;
             } else if (route.name === 'PropertyDetails') {
               iconName = focused ? faBuilding : faBuilding;
-            } else if (route.name === 'Login') {
+            } else if (route.name === 'User') {
               iconName = focused ? faUser : faUser;
             }
 
@@ -77,7 +81,7 @@ export default function App() {
         <Tab.Screen name="Home" component={Home} />
         <Tab.Screen name="Properties" component={Property} />
         <Tab.Screen name="PropertyDetails" component={PropertyDetails} initialParams={{ propertyId: 'random' }} options={{ title: 'Property Details' }} />
-        <Tab.Screen name="Login" component={Login} />
+        <Tab.Screen name="User" component={User} />
       </Tab.Navigator>
     </NavigationContainer>
     </>

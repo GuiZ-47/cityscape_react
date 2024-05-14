@@ -26,11 +26,10 @@ const FilterModal = ({ modalVisible, setModalVisible, setCurrentPage, categories
           setModalVisible(!modalVisible);
         }}>
       <View style={styles.loadingContainer}>
-
-          <Image
-            source={require("./../../../assets/LoadingFilter.png")}
-            style={styles.image}
-          />
+        <Image
+          source={require("./../../../assets/LoadingFilter.png")}
+          style={styles.image}
+        />
       </View>
         </Modal>
     );

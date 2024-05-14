@@ -23,7 +23,6 @@ export default function PropertyDetails({ route, navigation }) {
   // Alors on choisi à la place une propriété aléatoire dans la base de donnée
   
   // Max Id dans la base de données
-
   const NbProperties = 25;
   
   const [id, setId] = useState();

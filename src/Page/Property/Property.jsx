@@ -12,6 +12,8 @@ export default function Property({ route, navigation }) {
   // Utilisation des hooks et des props de useState
   const [properties, setProperties] = useState([]);
 
+
+
   useEffect(() => {
     axios.get(`${GLOBALS.BASE_URL}/api/react/properties`)
     .then(function (response) {
@@ -37,12 +39,13 @@ export default function Property({ route, navigation }) {
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.contentContainer}>
-      <BreadcrumbProp />
-      <PropertyComponent />
-      <PropertySection properties={properties} setProperties={setProperties}/>
-      <SubscribeToNewsletter />    
-    </ScrollView>
+    // <ScrollView contentContainerStyle={styles.contentContainer}>
+    //   <BreadcrumbProp />
+    //   <PropertyComponent />
+    //   <PropertySection properties={properties} setProperties={setProperties}/>
+    //   <SubscribeToNewsletter />    
+    // </ScrollView>
+    <PropertySection properties={properties} setProperties={setProperties} />
   );
 };
 
