@@ -32,12 +32,10 @@ const PropertySection = ({ properties }) => {
   const [categories, setCategories] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
-
   // useEffect s'active à chaque changement de 'currentPage', ATTENTION à mettre tout les states AVANT le useEffect !!!!!
   useEffect(() => {
     // Si un filtre est actif, on fait une requête à l'API mais seulement s'il n'as pas déjà été appliqué
     if (filter.length !== 0 && areArraysDifferent(filter, lastFilter)) {
-
       // Convertir le tableau des Id à filtrer en une chaîne de requête
       const queryString = filter.map(id => `categoryIds[]=${id}`).join('&');
 
@@ -160,7 +158,7 @@ const PropertySection = ({ properties }) => {
               activeOpacity={0.6}
               underlayColor="#DDDDDD"
               onPress={() => navigation.navigate('PropertyDetails', { propertyId: item.propId })}>
-              <Image source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}${item.picName}` }} alt="" style={styles.coverImg} />
+                <Image source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}${item.picName}` }} alt="" style={styles.coverImg} />
             </TouchableHighlight>
             <View style={styles.propertyButton}><Text style={styles.propertyItemBadge}>Sale {item.propId}</Text></View>
           </View>
@@ -172,7 +170,7 @@ const PropertySection = ({ properties }) => {
                 activeOpacity={0.6}
                 underlayColor="#DDDDDD"
                 onPress={() => navigation.navigate('PropertyDetails', { propertyId: item.propId })}>
-                <Text style={styles.link}>{item.propTitle}</Text>
+                  <Text style={styles.link}>{item.propTitle}</Text>
               </TouchableHighlight>
             </Text>
             <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>{item.propLocation}, {item.propCity}, {item.propCountry}</Text>
@@ -189,7 +187,13 @@ const PropertySection = ({ properties }) => {
                   <Text style={styles.bedsAndBaths}>{item.propBaths} Baths</Text>
                 </View>
               </View>
-              <Text href="#" style={styles.simpleBtn}>Book Now <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
+              <TouchableHighlight
+                style={styles.link}
+                activeOpacity={0.75}
+                underlayColor="#181616"
+                onPress={() => navigation.navigate('PropertyDetails', { propertyId: item.propId })}>
+                  <Text style={styles.simpleBtn}>Book Now <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
+              </TouchableHighlight>
             </View>
           </View>
         </View>
@@ -215,8 +219,8 @@ const PropertySection = ({ properties }) => {
             {refreshing && <Text style={styles.loadingMessage}>Loading Filtered Properties…</Text>}
             <TouchableHighlight
               style={styles.filterButton}
-              activeOpacity={0.6}
-              underlayColor="#DDDDDD"
+              activeOpacity={0.5}
+              underlayColor="#FFFFFF"
               onPress={() => handleFilterButtonClick()}>
               <Text href="#" style={styles.btn}>Filter Properties <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'#FFFFFF'} size={20} /></Text></Text>
             </TouchableHighlight>

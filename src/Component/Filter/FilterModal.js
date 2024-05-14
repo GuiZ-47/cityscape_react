@@ -44,23 +44,25 @@ const FilterModal = ({ modalVisible, setModalVisible, setCurrentPage, categories
       style={{ flex: 1, width: '100%' }}
      >
       <SafeAreaView style={{ flex: 1, padding: 20, gap: 20 }}>
-        <View style={{ marginBottom: 20, paddingHorizontal: 30 }}>
+        <View style={{ alignItems: 'center' }}>
           <Text style={{ fontSize: 26 }}>Filtering Properties</Text>
         </View>
 
         <RadioButton categories={categories} intermediateFilter={intermediateFilter} setIntermediateFilter={setIntermediateFilter} />
-        <Button title="Apply" color="#F69120" onPress={() => {
-          setModalVisible(!modalVisible);
-          setFilter(intermediateFilter);
-          setCurrentPage(0);
-        }} />
-        <Button title="Clear" color="#F69120" onPress={() => {
-          setModalVisible(!modalVisible);
-          setFilter([]);
-          setIntermediateFilter([]);
-          setFilteredProperties([]);
-          setCurrentPage(0);
-        }} />
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+          <Button title="Apply" color="#F69120" onPress={() => {
+            setModalVisible(!modalVisible);
+            setFilter(intermediateFilter);
+            setCurrentPage(0);
+          }} />
+          <Button title="Clear" color="#BDBDBD" onPress={() => {
+            setModalVisible(!modalVisible);
+            setFilter([]);
+            setIntermediateFilter([]);
+            setFilteredProperties([]);
+            setCurrentPage(0);
+          }} />
+        </View>
       </SafeAreaView>
     </Modal>
   );
