@@ -16,7 +16,7 @@ import Home from './src/Page/Home/Home';
 import Property from './src/Page/Property/Property';
 import PropertyDetails from './src/Page/PropertyDetails/PropertyDetailsPage';
 import User from './src/Page/User/UserPage';
-import PushNotification from './src/Component/Notification/notificationPush';
+// import PushNotification from './src/Component/Notification/notificationPush';
 import Notification from './src/Component/Notification/NotificationPushGuillaume';
 
 // Pour une utilisation de Redux, voir le projet « cityscape-react-native-redux »

@@ -25,10 +25,6 @@
 		"googleServicesFile": "google-services.json"
       },
       "package": "com.sdeolive.cityscape_react"
-      /*  "backgroundColor": "#ffffff"
-      },
-      "googleServicesFile": "./google-services.json",
-      "package": "com.guiz.cityscape"*/
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -37,10 +33,7 @@
       "eas": {
         "projectId": "f65551f0-3de8-4c0f-a646-c16e5ac405ea"
       }
-    }
-   /*     "projectId": "deb75a56-facd-48b9-bdfb-29ab2e1eaace"
-      }
-    },*/
+    },
     "plugins": [
       "@react-native-firebase/app"
     ]
