@@ -45,4 +45,3 @@ notes react.docx
 src/Component/Notification/ExpoPushNotification.js
 src/Component/Notification/notificationPush.js
 app.json
-eas.json

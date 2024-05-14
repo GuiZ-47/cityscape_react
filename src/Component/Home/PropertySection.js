@@ -6,19 +6,13 @@ import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
+import { faHouse } from '@fortawesome/free-solid-svg-icons/faHouse';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons/faMapMarkerAlt';
 import { faBed } from '@fortawesome/free-solid-svg-icons/faBed';
 import { faBath } from '@fortawesome/free-solid-svg-icons/faBath';
-import { FontAwesome6 } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
-
-import axios from 'axios';
 
 import GLOBALS from '../Common/Globals';
 import FilterModal from '../Filter/FilterModal';
-
-import FilterModal from '../Filter/FilterModal';
-import { Center } from 'native-base';
 
 const PropertySection = ({ properties }) => {
   // Pour la navigation entre les pages
@@ -180,7 +174,7 @@ const PropertySection = ({ properties }) => {
                   <Text style={styles.link}>{item.propTitle}</Text>
               </TouchableHighlight>
             </Text>
-            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesome6 name="house" size={16} color="white" /> </Text>{item.catMainCategoryName} - {item.catSubCategoryName}</Text>
+            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faHouse} color={'white'} /> </Text>{item.catMainCategoryName} - {item.catSubCategoryName}</Text>
             <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>{item.propLocation}, {item.propCity}, {item.propCountry}</Text>
             <View style={styles.propertyItemBottom}>
               <View style={styles.amenitiesList}>
