@@ -10,14 +10,20 @@ const AddressPropertyDetails = ({propertyDetails}) => {
         <View style={styles.row}>
           <View style={styles.column}>
             <View style={styles.addressContent}>
-              <Text style={styles.addressText}>Address</Text>
-              <Text style={styles.addressTitle}>Mirpur 1, Chineese</Text>
+              <Text style={styles.addressText}>Location</Text>
+              <Text style={styles.addressTitle}>{propertyDetails[0].propLocation}, {propertyDetails[0].propCity}</Text>
             </View>
           </View>
           <View style={styles.column}>
             <View style={styles.addressContent}>
               <Text style={styles.addressText}>Code</Text>
-              <Text style={styles.addressTitle}>2365</Text>
+              <Text style={styles.addressTitle}>{propertyDetails[0].propPostcode}</Text>
+            </View>
+          </View>
+          <View style={styles.column}>
+            <View style={styles.addressContent}>
+              <Text style={styles.addressText}>Country</Text>
+              <Text style={styles.addressTitle}>{propertyDetails[0].propCountry}</Text>
             </View>
           </View>
         </View>
@@ -44,6 +50,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
+    marginLeft: 7.5,
     marginBottom: 10,
   },
   content: {
@@ -57,15 +64,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   addressContent: {
-    flexDirection: 'row',
+    //flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
   },
   addressText: {
-    fontSize: 18,
+    fontSize: 15,
   },
   addressTitle: {
-    fontSize: 15,
+    fontSize: 18,
+    textAlign: 'center',
     marginBottom: 0,
   },
   addressMap: {

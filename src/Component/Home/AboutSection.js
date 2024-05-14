@@ -1,51 +1,45 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { SvgUri } from 'react-native-svg';
+
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUsers } from '@fortawesome/free-solid-svg-icons/faUsers';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons/faArrowRight';
 
 const AboutSection = () => {
   return (
     <View style={styles.about}>
-      <View style={styles.container}>
-        <View style={styles.row}>
-          <View style={styles.col}>
-            <View style={styles.aboutThumb}>
-              <Image source={require('../../../assets/images/thumbs/about-img.png')} style={styles.coverImg} alt="" />
-              <View style={styles.clientStatistics}>
-                <Text style={styles.clientStatisticsIcon}><FontAwesomeIcon icon={faUsers} color={'orange'} /></Text>
-                <View style={styles.clientStatisticsContent}>
-                  <Text style={styles.clientStatisticsNumber}>4,000+</Text>
-                  <Text style={styles.clientStatisticsText}>Satisfied Clients</Text>
-                </View>
-              </View>
-            </View>
+      <View style={styles.aboutThumb}>
+        <Image source={require('../../../assets/images/thumbs/about-img.png')} style={styles.coverImg} alt="" />
+        <View style={styles.clientStatistics}>
+          <Text style={styles.clientStatisticsIcon}><FontAwesomeIcon icon={faUsers} color={'orange'} /></Text>
+          <View style={styles.clientStatisticsContent}>
+            <Text style={styles.clientStatisticsNumber}>4,000+</Text>
+            <Text style={styles.clientStatisticsText}>Satisfied Clients</Text>
           </View>
-          <View style={styles.col}>
-            <View style={styles.aboutContent}>
-              <View style={styles.sectionHeading}>
-                <Text style={styles.sectionHeadingSubtitle}> <Text style={styles.textGradient}>About Us</Text> </Text>
-                <Text style={styles.sectionHeadingTitle}>Stay with us feel at home Your perfect stay awaits</Text>
-                <Text style={styles.sectionHeadingDesc}>Real Estate is a vast industry that deals with the buying, selling, and renting of properties. It inv transactions related to residential</Text>
-              </View>
-              <View style={styles.aboutBox}>
-                <View style={styles.aboutBoxIcon}>
-                  <SvgUri
-                    width={400}
-                    height={300}
-                    source={require('../../../assets/images/icons/about-icon.svg')}
-                  />
-                </View>
-                <View style={styles.aboutBoxContent}>
-                  <Text style={styles.aboutBoxTitle}>Your Dream Home Awaits</Text>
-                  <Text style={styles.aboutBoxDesc}>Real Estate is a vast industry that deals with the buying, selling, and renting of properties. It inv transactions related to residential, commercial, and industrial properties</Text>
-                </View>
-              </View>
-              <View style={styles.aboutButton}>
-                <Text href="#" style={styles.btn}>Learn More<Text class="icon-right"><Text class="fas fa-arrow-right"></Text></Text></Text>
-              </View>
-            </View>
+        </View>
+      </View>
+      <View style={styles.aboutContent}>
+        <View style={styles.sectionHeading}>
+          <Text style={styles.sectionHeadingSubtitle}>About Us</Text>
+          <Text style={styles.sectionHeadingTitle}>Stay with us feel at home Your perfect stay awaits</Text>
+          <Text style={styles.sectionHeadingDesc}>Real Estate is a vast industry that deals with the buying, selling, and renting of properties. It inv transactions related to residential</Text>
+        </View>
+        <View style={styles.aboutBox}>
+          <View style={styles.aboutBoxIcon}>
+            <SvgUri
+              width={400}
+              height={300}
+              source={require('../../../assets/images/icons/about-icon.svg')}
+            />
           </View>
+          <View style={styles.aboutBoxContent}>
+            <Text style={styles.aboutBoxTitle}>Your Dream Home Awaits</Text>
+            <Text style={styles.aboutBoxDesc}>Real Estate is a vast industry that deals with the buying, selling, and renting of properties. It inv transactions related to residential, commercial, and industrial properties</Text>
+          </View>
+        </View>
+        <View style={styles.aboutButton}>
+          <Text href="#" style={styles.btn}>Learn More <FontAwesomeIcon icon={faArrowRight} color={'#FFFFFF'} /></Text>
         </View>
       </View>
     </View>
@@ -54,118 +48,68 @@ const AboutSection = () => {
 
 const styles = StyleSheet.create({
   about: {
-    alignItems: 'center',
     width: 400,
-    flexDirection: 'column', 
-    //padding: '60px',
-    //margin: '50px',
-    //justifyContent: 'center'
-  },
-  container: {
-    width: '100%',
-    flexDirection: 'column', 
-    //flexWrap: 'wrap',
-    //justifyContent: 'center'
-  },
-  row: {
-    flexDirection: 'column', 
+    flexDirection: 'column',
     alignItems: 'center',
-    //flexWrap: 'wrap',
-    marginTop: 'calc(-1 * 1.5)',
-    marginRight: 'calc(-.5 * 1.5)',
-    marginLeft: 'calc(-.5 * 1.5)'
   },
-  col: {
-    flexDirection: 'column',
-    //flexShrink: 0,
-    width: '100%',
-    maxWidth: '100%',
-    paddingRight: 'calc(1.5 * .5)',
-    paddingLeft: 'calc(1.5 * .5)',
-    marginTop: 0 
- },
   aboutThumb: {
-    //position: 'relative',
-    flexDirection: 'column',
-    //flexWrap: 'nowrap',
-    //zIndex: 1,
-    //textAlign: 'center',
-    padding: 'clamp(2rem, -0.13rem + 4.437vw, 3.75rem)',
-    //maxWidth: '580px'
+    width: '100%',
   },
   coverImg: {
     width: '100%',
-    //height: '100%',
-    //resizeMode: 'stretch'
   },
   clientStatistics: {
-    //backgroundColor: 'lightgray',
-    padding: '20px 40px',
-    //alignItems: 'center',
-    //justifyContent: 'right', 
+    width: '100%',
+    backgroundColor: 'lightgray',
     borderRadius: 5,
-    //position: 'absolute',
-    //left: '50%',
-    //transform: 'translateX(200px)',
-    //bottom: 0,
-    gap: 20
+    gap: 20,
   },
   clientStatisticsIcon: {
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
   },
   clientStatisticsContent: {
-    flexDirection: 'column',
-    alignContent: 'center',
-    //justifyContent: 'center'
+    width: '100%',
   },
   clientStatisticsNumber: {
     textAlign: 'center',
     fontWeight: '500',
-    marginBottom: '5px'
   },
   clientStatisticsText: {
     textAlign: 'center',
-    fontWeight: '600'
+    fontWeight: '600',
   },
   aboutContent: {
-    
+    alignItems: 'center',
+    width: '100%',
   },
   sectionHeading: {
-    marginBottom: '30px',
-    textAlign: 'left',
-    marginLeft: 0,
-    maxWidth: '630px',
-    marginRight: 'auto'
+    alignItems: 'center',
+    width: '100%',
+    gap: 7.5,
   },
   sectionHeadingSubtitle: {
+    width: '100%',
     textAlign: 'center',
-    padding: 10,
-    borderRadius: 3,
-    marginBottom: 10,
-    letterSpacing: 0.11,
+    paddingTop: 10,
     fontSize: 24,
-    textTransform: 'uppercase'
-  },
-  textGradient: {
-    color: '#FD7E14',
-    fontWeight: '600'
+    textTransform: 'uppercase',
+    color: '#F69120',
+    fontWeight: '600',
   },
   sectionHeadingTitle: {
+    width: '100%',
+    paddingHorizontal: 5,
     fontSize: 22,
-    marginBottom: 8
   },
   sectionHeadingDesc: {
-    fontSize: 20
+    fontSize: 20,
   },
   aboutBox: {
-    borderRadius: 5,
-    border: '2px solid lightgray',
-    padding: '20px',
-    gap: 20
+    gap: 20,
   },
   aboutBoxIcon: {
-    flexShrink: 0
+    //flexShrink: 0
   },
   aboutBoxContent: {
 
@@ -174,26 +118,25 @@ const styles = StyleSheet.create({
 
   },
   aboutBoxTitle: {
-    fontSize: 22
+    fontSize: 22,
     //fontWeight: '600'
   },
   aboutBoxDesc: {
     fontSize: 20
   },
   aboutButton: {
-    marginTop: 'clamp(1rem, -0.826rem + 3.803vw, 2.5rem)'
+    margin: 20,
+    backgroundColor: '#F69120',
+    borderTopLeftRadius: 17.5,
+    borderBottomRightRadius: 17.5,
+    //backgroundColor: 'linear-gradient(90deg, #F69220 0.04%, #F68E20 28.67%, #F48421 54.05%, #F37221 78.11%, #F05A22 100.04%)',
   },
   btn: {
-    textAlign: 'center',
-    borderRadius: 5,
-    fontWeight: '400',
-    color: 'black',
-    zIndex: 1,
+    padding: 10,
+    fontWeight: '600',
     fontSize: 20,
+    color: '#FFFFFF',
     textTransform: 'uppercase',
-    backgroundColor: 'transparent',
-    borderColor: 'orange',
-    padding: '14px 20px'
   }
 });
 

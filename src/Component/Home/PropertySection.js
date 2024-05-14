@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableHighlight, Text, Image, FlatList, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { Center } from 'native-base';
+import axios from 'axios';
 
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
@@ -13,15 +15,14 @@ import { FontAwesome } from '@expo/vector-icons';
 import axios from 'axios';
 
 import GLOBALS from '../Common/Globals';
+import FilterModal from '../Filter/FilterModal';
 
 import FilterModal from '../Filter/FilterModal';
 import { Center } from 'native-base';
 
 const PropertySection = ({ properties }) => {
-
   // Pour la navigation entre les pages
   const navigation = useNavigation();
-
 
   // states pour la pagination
   const itemsPerPage = 10;
@@ -38,13 +39,10 @@ const PropertySection = ({ properties }) => {
   const [categories, setCategories] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
 
-
   // useEffect s'active à chaque changement de 'currentPage', ATTENTION à mettre tout les states AVANT le useEffect !!!!!
   useEffect(() => {
-
     // Si un filtre est actif, on fait une requête à l'API mais seulement s'il n'as pas déjà été appliqué
     if (filter.length !== 0 && areArraysDifferent(filter, lastFilter)) {
-
       // Convertir le tableau des Id à filtrer en une chaîne de requête
       const queryString = filter.map(id => `categoryIds[]=${id}`).join('&');
 
@@ -66,13 +64,13 @@ const PropertySection = ({ properties }) => {
         });
     };
 
-      sliceProperties();
-    
+    sliceProperties();
 
-    console.log("slice trigger dans le useEffect")
+    console.log("slice trigger dans le useEffect");
   },
-    // Comme le bouton qui applique le filtre renvoie aussi à la première page, on ne rajoute pas filter dans le tableau des changements de states qui doivent déclencher useEffect
-    [currentPage, filter, refreshing]);
+  
+  // Comme le bouton qui applique le filtre renvoie aussi à la première page, on ne rajoute pas filter dans le tableau des changements de states qui doivent déclencher useEffect
+  [currentPage, filter, refreshing]);
 
   console.log(JSON.stringify(filteredProperties[0], null, 4));
   console.log("nombres de propriétés filtrées : " + filteredProperties.length);
@@ -93,12 +91,12 @@ const PropertySection = ({ properties }) => {
     console.log(Date());
   }
 
-  // change la page active
+  // Change la page active
   const handlePageClick = (p) => setCurrentPage(p);
 
   // Si la Flatlist n'a pas de données à afficher
   const handleEmpty = () => {
-    return <Text> No Property ! </Text>;
+    return <Text> No Properties! </Text>;
   };
 
   // Boutons de la pagination
@@ -146,7 +144,6 @@ const PropertySection = ({ properties }) => {
       .then(response => {
         // Gérez la réponse de l'API
         setCategories(response.data);
-
       })
       .catch(error => {
         // Gérez les erreurs
@@ -156,7 +153,7 @@ const PropertySection = ({ properties }) => {
   };
 
   // -------------------------------- FILTRE FIN -------------------------------------
-
+  
   // Modèle pour la FlatLst
   const renderItem = ({ item }) => (
     <View style={styles.row}>
@@ -168,9 +165,9 @@ const PropertySection = ({ properties }) => {
               activeOpacity={0.6}
               underlayColor="#DDDDDD"
               onPress={() => navigation.navigate('PropertyDetails', { propertyId: item.propId })}>
-              <Image source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}${item.picName}` }} alt="" style={styles.coverImg} />
+                <Image source={{ uri: `${GLOBALS.BASE_URL}${GLOBALS.URL_IMAGES_PROPERTIES}${item.picName}` }} alt="" style={styles.coverImg} />
             </TouchableHighlight>
-            <Text style={styles.propertyItemBadge}>Sale {item.propId}</Text>
+            <View style={styles.propertyButton}><Text style={styles.propertyItemBadge}>Sale {item.propId}</Text></View>
           </View>
           <View style={styles.propertyItemContent}>
             <Text style={styles.propertyItemPrice}>${item.propPrice} <Text style={styles.day}>/per day</Text></Text>
@@ -180,11 +177,11 @@ const PropertySection = ({ properties }) => {
                 activeOpacity={0.6}
                 underlayColor="#DDDDDD"
                 onPress={() => navigation.navigate('PropertyDetails', { propertyId: item.propId })}>
-                <Text style={styles.link}>{item.propTitle}</Text>
+                  <Text style={styles.link}>{item.propTitle}</Text>
               </TouchableHighlight>
             </Text>
             <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesome6 name="house" size={16} color="white" /> </Text>{item.catMainCategoryName} - {item.catSubCategoryName}</Text>
-            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>66 Broklyant, New York America</Text>
+            <Text style={styles.propertyItemLocation}><Text style={styles.icon}><FontAwesomeIcon icon={faMapMarkerAlt} color={'white'} /> </Text>{item.propLocation}, {item.propCity}, {item.propCountry}</Text>
             <View style={styles.propertyItemBottom}>
               <View style={styles.amenitiesList}>
                 <View style={styles.amenitiesListItem}>
@@ -198,7 +195,13 @@ const PropertySection = ({ properties }) => {
                   <Text style={styles.bedsAndBaths}>{item.propBaths} Baths</Text>
                 </View>
               </View>
-              <Text href="#" style={styles.simpleBtn}>Book Now<Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
+              <TouchableHighlight
+                style={styles.link}
+                activeOpacity={0.75}
+                underlayColor="#181616"
+                onPress={() => navigation.navigate('PropertyDetails', { propertyId: item.propId })}>
+                  <Text style={styles.simpleBtn}>Book Now <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'white'} /></Text></Text>
+              </TouchableHighlight>
             </View>
           </View>
         </View>
@@ -221,13 +224,13 @@ const PropertySection = ({ properties }) => {
         <View style={styles.container}>
           <View style={styles.sectionHeading}>
             {/* Feedback le temps de recevoir la query */}
-            {refreshing && <Text style={styles.loadingMessage}>  Loading Filtered Properties...</Text>}
+            {refreshing && <Text style={styles.loadingMessage}>Loading Filtered Properties…</Text>}
             <TouchableHighlight
               style={styles.filterButton}
-              activeOpacity={0.6}
-              underlayColor="#DDDDDD"
+              activeOpacity={0.5}
+              underlayColor="#FFFFFF"
               onPress={() => handleFilterButtonClick()}>
-              <Text href="#" style={styles.btn}> Filter Properties    <Text style={styles.iconRight}><FontAwesome name="arrow-right" size={20} color="white" /></Text></Text>
+              <Text href="#" style={styles.btn}>Filter Properties <Text style={styles.iconRight}><FontAwesomeIcon icon={faArrowRight} color={'#FFFFFF'} size={20} /></Text></Text>
             </TouchableHighlight>
           </View>
 
@@ -244,7 +247,6 @@ const PropertySection = ({ properties }) => {
           <View style={styles.paginationContainer}>
             {renderPaginationButtons()}
           </View>
-
         </View>
       </View>
     </>
@@ -256,8 +258,8 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#181616',
     color: 'white',
-    paddingTop: '60px',
-    paddingBottom: '60px'
+    borderTopLeftRadius: 17.5,
+    borderBottomRightRadius: 17.5
   },
   container: {
     width: '100%',
@@ -293,18 +295,20 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   btn: {
+    borderTopLeftRadius: 17.5,
     textAlign: 'center',
-    fontWeight: '400',
+    fontWeight: '600',
     color: 'white',
-    zIndex: 1,
     fontSize: 20,
     textTransform: 'uppercase',
-    backgroundColor: 'transparent',
-    borderColor: 'orange',
+    backgroundColor: '#F69120',
+    justifyContent: 'center',
     padding: 10
   },
   iconRight: {
-    textAlign: 'right'
+    textAlign: 'right',
+    color: 'white',
+    fontSize: 20,
   },
   row: {
     flexWrap: 'wrap',
@@ -316,14 +320,9 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     width: '100%',
     maxWidth: '100%',
-    paddingRight: 'calc(1.5 * .5)',
-    paddingLeft: 'calc(1.5 * .5)',
-    marginTop: 1.5
   },
   propertyItem: {
     backgroundColor: '#211F1F',
-    borderRadius: 5,
-    overflow: 'hidden',
     position: 'relative',
     transition: '0.2s linear',
     boxShadow: '0px 4.8px 24.4px -6px rgba(19, 16, 34, 0.1), 0px 4px 13px -2px rgba(19, 16, 34, 0.06)'
@@ -340,16 +339,20 @@ const styles = StyleSheet.create({
   },
   coverImg: {
     width: 400,
-    height: 250,
+    height: 200,
     //resizeMode: 'contain'
   },
   propertyItemBadge: {
     textAlign: 'center',
+    opacity: 0.9,
     position: 'absolute',
-    right: 0,
-    top: 0,
-    padding: '5px 10px',
-    borderRadius: 5,
+    left: 0,
+    bottom: 0,
+    padding: 7.5,
+    backgroundColor: '#F69120',
+    borderTopLeftRadius: 17.5,
+    borderBottomRightRadius: 17.5,
+    fontWeight: '600',
     color: 'white',
     zIndex: 1,
     textTransform: 'uppercase',
@@ -359,7 +362,7 @@ const styles = StyleSheet.create({
   propertyItemContent: {
     padding: 'clamp(1rem, -0.065rem + 2.219vw, 1.875rem)',
     color: 'white',
-    flexGrow: 1
+    //flexGrow: 1
   },
   propertyItemPrice: {
     textAlign: 'center',
@@ -376,7 +379,7 @@ const styles = StyleSheet.create({
   propertyItemTitle: {
     textAlign: 'center',
     color: 'white',
-    padding: 10,
+    padding: 5,
     fontSize: 20,
     //fontWeight: '400'
   },
@@ -384,14 +387,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 14,
-    padding: 10,
+    //padding: 10,
     //fontWeight: '300',
     opacity: 0.8,
     gap: 0.5
   },
   propertyItemBottom: {
     //flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    //justifyContent: 'space-between',
+    alignItems: 'center',
     gap: 0.5
   },
   amenitiesList: {
@@ -418,7 +422,13 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   simpleBtn: {
-    textAlign: 'right',
+    textAlign: 'center',
+    padding: 7.5,
+    marginBottom: 15,
+    backgroundColor: '#F69120',
+    borderTopLeftRadius: 17.5,
+    borderBottomRightRadius: 17.5,
+    fontWeight: '600',
     fontSize: 20,
     color: 'white',
     textTransform: 'uppercase',
@@ -429,7 +439,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 8,
-    backgroundColor: 'transparent',
+    backgroundColor: '#211F1F',
+    borderBottomRightRadius: 17.5,
   },
   paginationButton: {
     justifyContent: 'center',
@@ -438,10 +449,10 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     marginHorizontal: 4,
-    backgroundColor: 'gray',
+    backgroundColor: '#BDBDBD',
   },
   activeButton: {
-    backgroundColor: '#22c55d',
+    backgroundColor: '#F69120',
     width: 50,
     height: 50,
     borderRadius: 25,
@@ -449,15 +460,11 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
   },
-
-  filterButton: {
-    backgroundColor: 'orange'
-  },
-  filterButtonText: {
-    color: 'orange',
-  },
   loadingMessage: {
-    backgroundColor: 'orange',
+    backgroundColor: '#F69120',
+    color: '#FFFFFF',
+    textAlign: 'center',
+    fontWeight: '400',
     fontSize: 20,
   },
 });

@@ -10,7 +10,7 @@ const PreviewPropertyDetails = ({propertyDetails}) => {
 
   return (
     <View style={styles.propertyDetailsItem}>
-      <Text style={styles.title}>Preview of the "{propertyDetails[0].propTitle}" property : </Text>
+      <Text style={styles.title}>Preview of the "{propertyDetails[0].propTitle}" property: </Text>
       <View style={styles.content}>
         <View style={styles.row}>
           <DetailItem
@@ -69,6 +69,7 @@ const DetailItem = ({ xml, text, title }) => {
 
 const styles = StyleSheet.create({
   propertyDetailsItem: {
+    marginLeft: 7.5,
     marginBottom: 20,
   },
   title: {

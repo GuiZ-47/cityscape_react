@@ -11,15 +11,13 @@ const VideoPopUpSection = () => {
 
   return (
     <View style={styles.videoPopUp}>
-      <View style={styles.container}>
-        <View style={styles.videoPopUpThumb}>
-          <Image source={require('../../../assets/images/thumbs/video-popup.png')} alt="" style={styles.coverImg} />
-            <TouchableOpacity
-              onPress={handlePlayVideo}
-              style={styles.playButton}>
-                <Text style={styles.videoPopUpButton}><FontAwesomeIcon icon={faPlay} color={'white'} /></Text>
-            </TouchableOpacity>
-        </View>
+      <View style={styles.videoPopUpThumb}>
+        <Image source={require('../../../assets/images/thumbs/video-popup.png')} alt="" style={styles.coverImg} />
+          <TouchableOpacity
+            onPress={handlePlayVideo}
+            style={styles.playButton}>
+              <FontAwesomeIcon icon={faPlay} color={'white'} />
+          </TouchableOpacity>
       </View>
     </View>
   );
@@ -27,29 +25,17 @@ const VideoPopUpSection = () => {
 
 const styles = StyleSheet.create({
   videoPopUp: {
-    //position: 'relative',
-    zIndex: 1,
-    backgroundColor: '#F8F8F8'
-  },
-  container: {
+    backgroundColor: '#F8F8F8',
     width: '100%',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
   },
   videoPopUpThumb: {
-    /*position: 'relative',
-    minHeight: '220px',
-    borderRadius: 5,*/
     overflow: 'hidden',
-    width: 400,
+    width: '100%',
     height: 150,
-    //resizeMode: 'contain',
-    transition: '0.2s linear'
   },
   coverImg: {
     width: '100%',
     height: '100%',
-    resizeMode: 'contain'
   }, 
   houseImage: {
     width: '100%',
@@ -68,16 +54,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  videoPopUpButton: {
-    position: 'absolute',
-    width: '80px',
-    height: '80px',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    fontSize: 50,
-    borderRadius: 50
-  }
 });
 
 export default VideoPopUpSection;
